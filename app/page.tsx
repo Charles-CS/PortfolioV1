@@ -298,7 +298,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { name: "GitHub", handle: "Charles-CS", url: "https://github.com/Charles-CS" },
-                  { name: "v0.dev", handle: "Charles-CS", url: "#" },
+                  { name: "Instagram", handle: "chrls_plnkton", url: "https://www.instagram.com/chrls_plnkton" },
                   { name: "Facebook", handle: "Charles Platon", url: "https://www.facebook.com/charles.platon.573221" },
                   { name: "LinkedIn", handle: "charles-platon", url: "https://www.linkedin.com/in/charles-platon" },
                 ].map((social) => (
