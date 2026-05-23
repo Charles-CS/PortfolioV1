@@ -1,0 +1,93 @@
+﻿
+> charles-portfolio@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.3.1
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 10.0s
+   Linting and checking validity of types ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Users\Charles\AppDa
+ta\Roamin ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+Failed to compile.
+
+./src/app/Awards/Hackat
+honEntry.tsx
+4:8  Error: 'Link' is 
+defined but never 
+used.  @typescript-esli
+nt/no-unused-vars
+37:3  Error: 
+'projectLink' is 
+defined but never 
+used.  @typescript-esli
+nt/no-unused-vars
+
+./src/app/layout.tsx
+27:7  Error: 
+'socialLinks' is 
+assigned a value but 
+never used.  @typescrip
+t-eslint/no-unused-vars
+
+./src/app/Projects/page
+.tsx
+340:19  Warning: Using 
+`<img>` could result 
+in slower LCP and 
+higher bandwidth. 
+Consider using `<Image 
+/>` from `next/image` 
+or a custom image 
+loader to 
+automatically optimize 
+images. This may incur 
+additional usage or 
+cost from your 
+provider. See: https://
+nextjs.org/docs/message
+s/no-img-element  @next
+/next/no-img-element
+
+./src/blocks/TextAnimat
+ions/FallingText/Fallin
+gText.tsx
+209:24  Warning: The 
+ref value 'canvasContai
+nerRef.current' will 
+likely have changed by 
+the time this effect 
+cleanup function runs. 
+If this ref points to 
+a node rendered by 
+React, copy 'canvasCont
+ainerRef.current' to a 
+variable inside the 
+effect, and use that 
+variable in the 
+cleanup function.  reac
+t-hooks/exhaustive-deps
+
+info  - Need to 
+disable some ESLint 
+rules? Learn more 
+here: https://nextjs.or
+g/docs/app/api-referenc
+e/config/eslint#disabli
+ng-rules

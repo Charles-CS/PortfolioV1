@@ -2,6 +2,19 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
+=======
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+>>>>>>> 12b2230302204165003d88cc0e105bdee5f7813b
 
 # next.js
 /.next/
@@ -10,13 +23,24 @@
 # production
 /build
 
+<<<<<<< HEAD
+=======
+# misc
+.DS_Store
+*.pem
+
+>>>>>>> 12b2230302204165003d88cc0e105bdee5f7813b
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+<<<<<<< HEAD
 # env files
+=======
+# env files (can opt-in for committing if needed)
+>>>>>>> 12b2230302204165003d88cc0e105bdee5f7813b
 .env*
 
 # vercel

@@ -1,0 +1,6 @@
+<svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- C letter -->
+  <path d="M85 30 C85 30 20 30 20 110 C20 190 85 190 85 190 L85 160 C85 160 50 160 50 110 C50 60 85 60 85 60 Z" fill="white" stroke="#00BBFF" stroke-width="1"/>
+  <!-- P letter -->
+  <path d="M100 30 L100 190 L130 190 L130 140 L150 140 C175 140 190 125 190 110 C190 95 190 80 190 80 C190 65 175 30 150 30 Z M130 60 L148 60 C160 60 160 110 148 110 L130 110 Z" fill="white" stroke="#00BBFF" stroke-width="1"/>
+</svg>

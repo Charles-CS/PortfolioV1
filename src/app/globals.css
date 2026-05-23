@@ -1,0 +1,256 @@
+/* globals.css */
+
+/* Keep your existing Tailwind import */
+@import "tailwindcss";
+
+/* === DARK MODE (default) === */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --nav-text: #ffffff;
+  --card-border: #374151;
+  --muted: #9ca3af;
+  --accent: #06b6d4;
+}
+
+/* === LIGHT MODE === */
+html.light {
+  --background: #f5f5f5;
+  --foreground: #0a0a0a;
+  --nav-text: #0a0a0a;
+  --card-border: #d1d5db;
+  --muted: #6b7280;
+  --accent: #0891b2;
+  --squares-filter: invert(1);
+}
+
+/* Keep your theme rule */
+:root inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-gilroy), var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Add this CSS block to your global stylesheet */
+.custom-corner-border {
+  position: relative;
+  border: none !important;
+  box-sizing: border-box;
+}
+
+.custom-corner-border::before,
+.custom-corner-border::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--card-border);
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Styles for the Top-Left corner piece (using ::before) */
+.custom-corner-border::before {
+  top: 0;
+  left: 0;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+/* Styles for the Bottom-Right corner piece (using ::after) */
+.custom-corner-border::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Keep your existing body styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-gilroy), Arial, Helvetica, sans-serif;
+  position: relative;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===================================================
+   % LIGHT MODE GLOBAL OVERRIDES %
+   These override hardcoded Tailwind color classes and 
+   standard component colors throughout the site.
+ =================================================== */
+
+/* Master text override for light mode */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light p,
+html.light span,
+html.light li,
+html.light a {
+  color: var(--foreground) !important;
+}
+
+/* Specific Tailwind overrides */
+html.light .text-white {
+  color: #0a0a0a !important;
+}
+
+html.light .text-gray-100 {
+  color: #0a0a0a !important;
+}
+
+html.light .text-gray-300 {
+  color: #262626 !important;
+}
+
+html.light .text-gray-400 {
+  color: #404040 !important;
+}
+
+html.light .text-white\/50 {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+/* SVG Icon overrides */
+html.light svg[stroke="white"] {
+  stroke: #0a0a0a !important;
+}
+
+html.light svg[stroke="currentColor"] {
+  stroke: #0a0a0a !important;
+}
+
+html.light svg[fill="white"] {
+  fill: #0a0a0a !important;
+}
+
+html.light .animate-bounce svg {
+  stroke: #0a0a0a !important;
+}
+
+/* Borders */
+html.light .border-white {
+  border-color: #0a0a0a !important;
+}
+
+html.light .border-opacity-20 {
+  border-color: rgba(10, 10, 10, 0.2) !important;
+}
+
+/* Ensure active nav items stay white in light mode */
+html.light li.active,
+html.light li.active a,
+html.light .effect.text.active {
+  color: #ffffff !important;
+}
+
+/* Backgrounds / Cards */
+html.light .bg-black.rounded-2xl {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .bg-transparent {
+  background-color: transparent !important;
+}
+
+/* Component specific: BlurText, TrueFocus, etc. */
+html.light .blur-text span {
+  color: var(--foreground) !important;
+}
+
+html.light .true-focus-text {
+  color: var(--foreground) !important;
+}
+
+/* Body noise adjustment */
+html.light body::after {
+  opacity: 0.02;
+}
+
+
+/* Contact Page overrides */
+html.light .contact-input-field {
+  border: 2px solid rgba(0, 0, 0, 0.8) !important;
+  /* more black, slight thick */
+}
+
+html.light .contact-submit-btn {
+  background-color: #0a0a0a !important;
+  /* black */
+  color: #ffffff !important;
+  /* white */
+}
+
+html.light .contact-submit-btn:hover {
+  background-color: #333333 !important;
+}
+
+/* Projects Page overrides */
+html.light .proj-tech-icon {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .proj-view-btn {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .proj-view-btn:hover {
+  background-color: #f9f9f9 !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light .proj-featured-label,
+html.light .proj-red-highlight {
+  color: #0a0a0a !important;
+}
+
+html.light .proj-genre-tag {
+  color: #0a0a0a !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light .proj-sep-line {
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.4), transparent) !important;
+}
+
+html.light .proj-dashed-line {
+  border-color: #0a0a0a !important;
+}
+
+html.light .proj-more-text {
+  color: #0a0a0a !important;
+  opacity: 1 !important;
+}
+
+/* Noise effect pseudo-element */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.05;
+  filter: url('data:image/svg+xml,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+      <filter id="noise">\
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>\
+      </filter>\
+      <rect width="100%" height="100%" filter="url(%23noise)"/>\
+    </svg>\
+  #noise');
+  pointer-events: none;
+}
