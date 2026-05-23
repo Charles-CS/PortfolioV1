@@ -64,9 +64,7 @@ export default function Home() {
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">Hello, world! Call me</div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Charles
-                  <br />
-                  <span className="text-muted-foreground">Platon</span>
+                  Charles Platon
                 </h1>
               </div>
 
@@ -301,7 +299,7 @@ export default function Home() {
                 {[
                   { name: "GitHub", handle: "Charles-CS", url: "https://github.com/Charles-CS" },
                   { name: "v0.dev", handle: "Charles-CS", url: "#" },
-                  { name: "HubSpot Community", handle: "Charles-CS", url: "#" },
+                  { name: "Facebook", handle: "Charles Platon", url: "https://www.facebook.com/charles.platon.573221" },
                   { name: "LinkedIn", handle: "charles-platon", url: "https://www.linkedin.com/in/charles-platon" },
                 ].map((social) => (
                   <Link
