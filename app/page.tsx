@@ -132,23 +132,29 @@ export default function Home() {
                   year: "2026",
                   role: "Kumpirma",
                   company: "",
-                  description:
-                    "Full-stack AI + Blockchain system for signature verification. Integrates YOLOv8, Pix2Pix GAN, and Siamese CapsNet with Ethereum smart contracts and IPFS for tamper-proof document authentication.",
+                  description: "AI + blockchain signature verification using YOLOv8, Pix2Pix, Siamese CapsNet, Ethereum & IPFS.",
                   tech: ["Next.js", "TypeScript", "Python", "OpenCV", "TensorFlow", "PostgreSQL", "IPFS"],
                 },
                 {
                   year: "2026",
                   role: "RedQuest",
                   company: "",
-                  description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
+                  description: "Mobile platform that connects blood requesters with nearby donors and enables rapid delivery to hospitals.",
                   tech: ["React Native", "Expo Go", "Tailwind", "Railway", "PostgreSQL"],
                 },
                 {
                   year: "2026",
                   role: "Lunas",
                   company: "",
-                  description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
+                  description: "Secure web platform giving clinicians instant access to patient health data via QR code for emergencies.",
                   tech: ["Next.Js", "React", "PostgreSQL", "Password Hashing", "RBAC", "TailwindCSS"],
+                },
+                {
+                  year: "2026",
+                  role: "Toka",
+                  company: "",
+                  description: "React Native + Firebase app that turns chores into a rewards micro-economy with real-time approvals and a savings vault.",
+                  tech: ["React Native", "TypeScript", "Firebase"],
                 },
               ].map((job, index) => (
                 <div
