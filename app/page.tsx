@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react"
 export default function Home() {
   const [isDark, setIsDark] = useState(false)
   const [activeSection, setActiveSection] = useState("")
+  const [showHoverLabel, setShowHoverLabel] = useState(false)
+  const [hoverLabelPosition, setHoverLabelPosition] = useState({ x: 0, y: 0 })
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
@@ -36,6 +38,20 @@ export default function Home() {
     setIsDark(!isDark)
   }
 
+  const updateHoverLabelPosition = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const labelWidth = 92
+    const labelHeight = 32
+    const padding = 12
+    const rawX = event.clientX - bounds.left
+    const rawY = event.clientY - bounds.top - labelHeight / 2 - 2
+
+    const nextX = Math.min(Math.max(rawX, padding + labelWidth / 2), bounds.width - padding - labelWidth / 2)
+    const nextY = Math.min(Math.max(rawY, padding + labelHeight / 2), bounds.height - padding - labelHeight / 2)
+
+    setHoverLabelPosition({ x: nextX, y: nextY })
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
@@ -44,9 +60,8 @@ export default function Home() {
             <button
               key={section}
               onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
-              className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-              }`}
+              className={`w-2 h-8 rounded-full transition-all duration-500 ${activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                }`}
               aria-label={`Navigate to ${section}`}
             />
           ))}
@@ -59,8 +74,18 @@ export default function Home() {
           ref={(el) => { sectionsRef.current[0] = el }}
           className="min-h-screen flex items-center opacity-0"
         >
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8">
+          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full items-start">
+            <Link
+              href="/about"
+              onMouseEnter={(event) => {
+                setShowHoverLabel(true)
+                updateHoverLabelPosition(event)
+              }}
+              onMouseMove={updateHoverLabelPosition}
+              onMouseLeave={() => setShowHoverLabel(false)}
+              className="group lg:col-span-3 relative block space-y-6 sm:space-y-8 rounded-3xl p-4 -m-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20"
+              aria-label="Go to the About Me page"
+            >
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">Hello, world! Call me</div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
@@ -85,27 +110,20 @@ export default function Home() {
                   </div>
                   <div>Philippines</div>
                 </div>
+              </div>
 
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm text-foreground hover:border-muted-foreground/60 transition-colors duration-300"
-                  >
-                    About
-                  </Link>
-                  <Link
-                    href="https://charlesplaton.vercel.app/img/CV/PlatonCV.pptx.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm text-foreground hover:border-muted-foreground/60 transition-colors duration-300"
-                  >
-                    Resume
-                  </Link>
+              <div
+                className={`pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-150 ${showHoverLabel ? "opacity-100" : "opacity-0"
+                  }`}
+                style={{ left: hoverLabelPosition.x, top: hoverLabelPosition.y }}
+              >
+                <div className="rounded-full border border-border bg-background/90 px-3 py-1.5 text-[11px] leading-none whitespace-nowrap text-foreground shadow-sm backdrop-blur-sm">
+                  Click for more
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
+            <div className="lg:col-span-2 flex flex-col justify-center space-y-6 sm:space-y-8 mt-8 lg:mt-0 lg:pt-24">
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                 <div className="space-y-2">
