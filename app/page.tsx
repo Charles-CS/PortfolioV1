@@ -299,14 +299,16 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "GitHub", handle: "@charlesplaton", url: "#" },
-                  { name: "v0.dev", handle: "@charlesplaton", url: "#" },
-                  { name: "HubSpot Community", handle: "@charlesplaton", url: "#" },
+                  { name: "GitHub", handle: "Charles-CS", url: "https://github.com/Charles-CS" },
+                  { name: "v0.dev", handle: "Charles-CS", url: "#" },
+                  { name: "HubSpot Community", handle: "Charles-CS", url: "#" },
                   { name: "LinkedIn", handle: "charlesplaton", url: "#" },
                 ].map((social) => (
                   <Link
                     key={social.name}
                     href={social.url}
+                    target={social.name === "GitHub" ? "_blank" : undefined}
+                    rel={social.name === "GitHub" ? "noopener noreferrer" : undefined}
                     className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
                   >
                     <div className="space-y-2">
