@@ -302,13 +302,13 @@ export default function Home() {
                   { name: "GitHub", handle: "Charles-CS", url: "https://github.com/Charles-CS" },
                   { name: "v0.dev", handle: "Charles-CS", url: "#" },
                   { name: "HubSpot Community", handle: "Charles-CS", url: "#" },
-                  { name: "LinkedIn", handle: "charlesplaton", url: "#" },
+                  { name: "LinkedIn", handle: "charles-platon", url: "https://www.linkedin.com/in/charles-platon" },
                 ].map((social) => (
                   <Link
                     key={social.name}
                     href={social.url}
-                    target={social.name === "GitHub" ? "_blank" : undefined}
-                    rel={social.name === "GitHub" ? "noopener noreferrer" : undefined}
+                    target={social.url !== "#" ? "_blank" : undefined}
+                    rel={social.url !== "#" ? "noopener noreferrer" : undefined}
                     className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
                   >
                     <div className="space-y-2">
