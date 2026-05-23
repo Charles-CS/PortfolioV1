@@ -197,7 +197,7 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Recent Thoughts</h2>
+            <h2 className="text-3xl sm:text-4xl font-light">Project & Achievements</h2>
 
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
               {[
