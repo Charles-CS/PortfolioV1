@@ -129,32 +129,26 @@ export default function Home() {
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
-                  year: "2023",
-                  role: "Senior Frontend Engineer",
-                  company: "Vercel",
-                  description: "Leading frontend architecture for developer tools and AI-powered features.",
-                  tech: ["React", "TypeScript", "Next.js"],
+                  year: "2024",
+                  role: "Kumpirma",
+                  company: "",
+                  description:
+                    "Full-stack AI + Blockchain system for signature verification. Integrates YOLOv8, Pix2Pix GAN, and Siamese CapsNet with Ethereum smart contracts and IPFS for tamper-proof document authentication.",
+                  tech: ["Next.js", "TypeScript", "Python", "OpenCV", "TensorFlow", "PostgreSQL", "IPFS"],
                 },
                 {
-                  year: "2022",
-                  role: "Frontend Engineer",
-                  company: "Linear",
-                  description: "Built performant interfaces for project management and team collaboration.",
-                  tech: ["React", "GraphQL", "Framer Motion"],
+                  year: "2024",
+                  role: "RedQuest",
+                  company: "",
+                  description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
+                  tech: ["Next.js", "TypeScript"],
                 },
                 {
-                  year: "2021",
-                  role: "Full Stack Developer",
-                  company: "Stripe",
-                  description: "Developed payment infrastructure and merchant-facing dashboard features.",
-                  tech: ["Ruby", "React", "PostgreSQL"],
-                },
-                {
-                  year: "2019",
-                  role: "Software Engineer",
-                  company: "Airbnb",
-                  description: "Created booking flow optimizations and host management tools.",
-                  tech: ["React", "Node.js", "MySQL"],
+                  year: "2024",
+                  role: "Lunas",
+                  company: "",
+                  description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
+                  tech: ["Next.js", "TypeScript"],
                 },
               ].map((job, index) => (
                 <div
