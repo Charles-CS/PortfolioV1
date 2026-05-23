@@ -204,14 +204,14 @@ export default function Home() {
                 {
                   title: "Portfolio Showcase",
                   excerpt: "A collection of my recent development work, ranging from full-stack applications to experimental interactive web experiences.",
-                  date: "Dec 2024",
+                  date: "Jan 2025 - 2026",
                   readTime: "All Projects",
                 },
                 {
-                  title: "Design Systems at Scale",
-                  excerpt: "Lessons learned from building and maintaining design systems across multiple products.",
-                  date: "Nov 2024",
-                  readTime: "8 min",
+                  title: "Hackathons",
+                  excerpt: "Intense 48-hour sprints of innovation and collaboration, building functional prototypes to solve real-world challenges.",
+                  date: "May 2026",
+                  readTime: "Experiences",
                 },
                 {
                   title: "Performance-First Development",
