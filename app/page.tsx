@@ -62,20 +62,20 @@ export default function Home() {
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2025</div>
+                <div className="text-sm text-muted-foreground font-mono tracking-wider">Hello, world! Call me</div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Felix
+                  Charles
                   <br />
-                  <span className="text-muted-foreground">Macaspac</span>
+                  <span className="text-muted-foreground">Platon</span>
                 </h1>
               </div>
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Frontend Developer crafting digital experiences at the intersection of
-                  <span className="text-foreground"> design</span>,<span className="text-foreground"> technology</span>,
-                  and
-                  <span className="text-foreground"> user experience</span>.
+                  Aspiring Frontend Engineer specializing in
+                  <span className="text-foreground"> High-Fidelity UIs</span>,
+                  <span className="text-foreground"> Web Architectures</span>, and
+                  <span className="text-foreground"> Interactive Design</span>.
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
@@ -92,16 +92,16 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                 <div className="space-y-2">
-                  <div className="text-foreground">Frontend Developer</div>
-                  <div className="text-muted-foreground">@ Hububble</div>
-                  <div className="text-xs text-muted-foreground">2021 — Present</div>
+                  <div className="text-foreground">3rd-Year CS Student</div>
+                  <div className="text-muted-foreground">@ University of Cabuyao</div>
+                  <div className="text-xs text-muted-foreground">2026 - Present</div>
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
                 <div className="flex flex-wrap gap-2">
-                  {["HubL", "React", "TypeScript", "HubSpot CMS", "Node.js"].map((skill) => (
+                  {["React", "TypeScript", "Node.js", "Next.js", "Tailwind"].map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -299,10 +299,10 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "GitHub", handle: "@felixmacaspac", url: "#" },
-                  { name: "v0.dev", handle: "@felixmacaspac", url: "#" },
-                  { name: "HubSpot Community", handle: "@felixmacaspac", url: "#" },
-                  { name: "LinkedIn", handle: "felixmacaspac", url: "#" },
+                  { name: "GitHub", handle: "@charlesplaton", url: "#" },
+                  { name: "v0.dev", handle: "@charlesplaton", url: "#" },
+                  { name: "HubSpot Community", handle: "@charlesplaton", url: "#" },
+                  { name: "LinkedIn", handle: "charlesplaton", url: "#" },
                 ].map((social) => (
                   <Link
                     key={social.name}
@@ -325,8 +325,8 @@ export default function Home() {
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 Felix Macaspac. All rights reserved.</div>
-              <div className="text-xs text-muted-foreground">Built with v0.dev by Felix Macaspac</div>
+              <div className="text-sm text-muted-foreground">© 2026 Charles Platon. All rights reserved.</div>
+              <div className="text-xs text-muted-foreground">Built with v0.dev by Charles Platon</div>
             </div>
 
             <div className="flex items-center gap-4">
