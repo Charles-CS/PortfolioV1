@@ -85,6 +85,23 @@ export default function Home() {
                   </div>
                   <div>Philippines</div>
                 </div>
+
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm text-foreground hover:border-muted-foreground/60 transition-colors duration-300"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    href="https://charlesplaton.vercel.app/img/CV/PlatonCV.pptx.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm text-foreground hover:border-muted-foreground/60 transition-colors duration-300"
+                  >
+                    Resume
+                  </Link>
+                </div>
               </div>
             </div>
 
