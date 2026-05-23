@@ -141,14 +141,14 @@ export default function Home() {
                   role: "RedQuest",
                   company: "",
                   description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
-                  tech: ["Next.js", "TypeScript"],
+                  tech: ["React Native", "Expo Go", "Tailwind", "Railway", "PostgreSQL"],
                 },
                 {
                   year: "2024",
                   role: "Lunas",
                   company: "",
                   description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
-                  tech: ["Next.js", "TypeScript"],
+                  tech: ["Next.Js", "React", "PostgreSQL", "Password Hashing", "RBAC", "TailwindCSS"],
                 },
               ].map((job, index) => (
                 <div
