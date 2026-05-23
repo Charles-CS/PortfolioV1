@@ -214,10 +214,10 @@ export default function Home() {
                   readTime: "Experiences",
                 },
                 {
-                  title: "Performance-First Development",
-                  excerpt: "Why performance should be a first-class citizen in your development workflow.",
-                  date: "Oct 2024",
-                  readTime: "6 min",
+                  title: "BSCS QuizBee Champion",
+                  excerpt: "Consistently recognized for technical knowledge and problem-solving speed in regional computer science competitions.",
+                  date: "Feb 2026",
+                  readTime: "Awards",
                 },
                 {
                   title: "The Art of Code Review",
