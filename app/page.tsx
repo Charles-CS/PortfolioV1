@@ -203,7 +203,7 @@ export default function Home() {
               {[
                 {
                   title: "Portfolio Showcase",
-                  excerpt: "A collection of my recent development work, ranging from full-stack applications to experimental interactive web experiences.",
+                  excerpt: "A collection of my recent development work, ranging from full-stack applications to interactive web experiences.",
                   date: "Jan 2025 - 2026",
                   readTime: "All Projects",
                 },
@@ -221,7 +221,7 @@ export default function Home() {
                 },
                 {
                   title: "Certificates",
-                  excerpt: "A testament to continuous learning and mastery of various technologies, from cloud platforms to specialized development",
+                  excerpt: "A testament to continuous learning and mastery of various technologies, from cloud to specialized development",
                   date: "Jan 2024 - 2026",
                   readTime: "Recognitions",
                 },
@@ -243,7 +243,7 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      <span>Read more</span>
+                      <span>View more</span>
                       <svg
                         className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                         fill="none"
