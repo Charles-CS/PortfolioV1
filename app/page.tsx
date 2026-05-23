@@ -129,7 +129,7 @@ export default function Home() {
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
-                  year: "2024",
+                  year: "2026",
                   role: "Kumpirma",
                   company: "",
                   description:
@@ -137,14 +137,14 @@ export default function Home() {
                   tech: ["Next.js", "TypeScript", "Python", "OpenCV", "TensorFlow", "PostgreSQL", "IPFS"],
                 },
                 {
-                  year: "2024",
+                  year: "2026",
                   role: "RedQuest",
                   company: "",
                   description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
                   tech: ["React Native", "Expo Go", "Tailwind", "Railway", "PostgreSQL"],
                 },
                 {
-                  year: "2024",
+                  year: "2026",
                   role: "Lunas",
                   company: "",
                   description: "Full-stack project listed in the portfolio — see project gallery for details and previews.",
