@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
@@ -153,7 +153,7 @@ export default function Home() {
                   year: "2026",
                   role: "Toka",
                   company: "",
-                  description: "React Native + Firebase app that turns chores into a rewards micro-economy with real-time approvals and a savings vault.",
+                  description: "App that turns chores into a rewards micro-economy with real-time approvals and a savings vault.",
                   tech: ["React Native", "TypeScript", "Firebase"],
                 },
               ].map((job, index) => (
