@@ -60,16 +60,7 @@ export default function AboutPage() {
                 I&apos;m currently exploring full-stack web, game development, and 3D art. When I&apos;m not shipping code, I&apos;m usually modeling in Blender or joining hackathons with my team.
               </p>
 
-              <div className="flex flex-wrap gap-2 pt-2">
-                {["Full-Stack Web", "Game Development", "3D Art", "Hackathons"].map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1 text-xs text-muted-foreground border border-border rounded-full"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              {/* Removed hobby/interest tags as requested */}
             </div>
 
             <aside className="space-y-5 rounded-2xl border border-border p-5 sm:p-6">
