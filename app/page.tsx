@@ -220,10 +220,10 @@ export default function Home() {
                   readTime: "Awards",
                 },
                 {
-                  title: "The Art of Code Review",
-                  excerpt: "Building better software through thoughtful and constructive code reviews.",
-                  date: "Sep 2024",
-                  readTime: "4 min",
+                  title: "Certificates",
+                  excerpt: "A testament to continuous learning and mastery of various technologies, from cloud platforms to specialized development",
+                  date: "Jan 2024 - 2026",
+                  readTime: "Recognitions",
                 },
               ].map((post, index) => (
                 <article
