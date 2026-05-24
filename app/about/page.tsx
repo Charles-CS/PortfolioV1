@@ -194,29 +194,72 @@ export default function AboutPage() {
           <div className="grid gap-6 sm:grid-cols-3 text-sm text-muted-foreground">
             <div>
               <div className="text-foreground mb-2">A member of</div>
-              <Link
-                href="https://www.facebook.com/ACSS.PNC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative group block w-full max-w-xs bg-background border border-border rounded-md p-4 hover:bg-muted/50 transition-colors"
-              >
-                <span className="absolute top-3 right-3 inline-flex items-center justify-center w-7 h-7 rounded-sm border border-border bg-muted/10 text-muted-foreground group-hover:text-foreground">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
+              <div className="space-y-3 max-w-xs">
+                <Link
+                  href="https://www.facebook.com/ACSS.PNC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-background border border-border rounded-md p-4 hover:bg-muted/50 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex-0">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">AC</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-foreground">Association of Computer Science Students - PNC</div>
+                    </div>
+                    <div className="flex-0">
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground" />
+                    </div>
+                  </div>
+                </Link>
 
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium text-foreground">Association of Computer Science Students</span>
-                  <span className="text-xs text-muted-foreground mt-1">(PNC)</span>
+                <div className="group block bg-background border border-border rounded-md p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-0">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">PC</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-foreground">Pamantasan ng Cabuyao</div>
+                      <div className="text-xs text-muted-foreground mt-1">College of Computing Studies</div>
+                    </div>
+                    <div className="flex-0">
+                      <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                    </div>
+                  </div>
                 </div>
-              </Link>
+              </div>
             </div>
+
             <div>
-              <div className="text-foreground mb-2">Focus</div>
-              Game systems, full‑stack web applications, and polished user experiences.
+              <div className="text-foreground mb-2">Social Links</div>
+              <div className="max-w-xs">
+                <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">in</span>
+                  <span className="text-sm text-foreground">LinkedIn</span>
+                </Link>
+
+                <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">gh</span>
+                  <span className="text-sm text-foreground">GitHub</span>
+                </Link>
+
+                <Link href="#" className="flex items-center gap-3 py-3">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">ig</span>
+                  <span className="text-sm text-foreground">Instagram</span>
+                </Link>
+              </div>
             </div>
+
             <div>
-              <div className="text-foreground mb-2">Outside code</div>
-              3D modeling in Blender, level design, creative builds, and hackathon collaborations.
+              <div className="text-foreground mb-2">Speaking</div>
+              <div className="border border-border rounded-md p-4 bg-background max-w-xs">
+                <p className="text-sm text-muted-foreground">Open to speaking about software, design, and interactive media at conferences and meetups.</p>
+                <Link href="#" className="mt-4 inline-flex items-center text-sm font-medium text-foreground">
+                  Get in touch
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
