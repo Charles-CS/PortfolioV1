@@ -3,14 +3,14 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
-import { useEffect, useState, use } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { getProjectBySlug, getNextProject, getPrevProject, projects } from "@/lib/projects"
 
-export default function ProjectPage(props: { params: Promise<{ slug: string }> }) {
-  const params = use(props.params)
+export default function ProjectPage() {
+  const params = useParams()
   const router = useRouter()
-  const slug = params.slug
+  const slug = params.slug as string
   const project = getProjectBySlug(slug)
   const [isLoaded, setIsLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -53,7 +53,6 @@ export default function ProjectPage(props: { params: Promise<{ slug: string }> }
 
   const loadingVariants = {
     initial: { y: "0%" },
-    animate: { y: "0%" },
     exit: { 
       y: "-100%", 
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
@@ -65,7 +64,7 @@ export default function ProjectPage(props: { params: Promise<{ slug: string }> }
     animate: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.5 } 
     },
     exit: { 
       opacity: 0, 
@@ -81,7 +80,6 @@ export default function ProjectPage(props: { params: Promise<{ slug: string }> }
           <motion.div
             variants={loadingVariants}
             initial="initial"
-            animate="animate"
             exit="exit"
             className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6 sm:p-10"
           >
@@ -92,11 +90,11 @@ export default function ProjectPage(props: { params: Promise<{ slug: string }> }
               exit="exit"
               className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
             >
-              <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground font-mono">
+              <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
                 hello there, meet
               </span>
               <h1 
-                className="text-4xl sm:text-6xl md:text-7xl font-light text-foreground"
+                className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground"
                 style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
               >
                 {project.name}
