@@ -12,8 +12,15 @@ export default function AllProjectsPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid">("list")
 
   useEffect(() => {
+    document.documentElement.classList.remove("loading-scroll-lock")
+    document.body.classList.remove("loading-scroll-lock")
+
     const timer = setTimeout(() => setIsLoaded(true), 50)
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      document.documentElement.classList.remove("loading-scroll-lock")
+      document.body.classList.remove("loading-scroll-lock")
+    }
   }, [])
 
   const handleImageLoad = (index: number) => {

@@ -32,6 +32,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       preloadRoute("/about")
+      preloadRoute("/work")
       preloadRoute("/work/kumpirma")
       preloadRoute("/work/redquest")
       preloadRoute("/work/lunas")
@@ -39,6 +40,7 @@ export default function Home() {
       preloadRoute("/hackathons")
 
       router.prefetch("/about")
+      router.prefetch("/work")
       router.prefetch("/work/kumpirma")
       router.prefetch("/work/redquest")
       router.prefetch("/work/lunas")
@@ -76,6 +78,16 @@ export default function Home() {
   const [hoveredProjectIndex, setHoveredProjectIndex] = useState<number | null>(null)
   const [projectHoverLabelPosition, setProjectHoverLabelPosition] = useState({ x: 0, y: 0 })
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+
+  useEffect(() => {
+    document.documentElement.classList.remove("loading-scroll-lock")
+    document.body.classList.remove("loading-scroll-lock")
+
+    return () => {
+      document.documentElement.classList.remove("loading-scroll-lock")
+      document.body.classList.remove("loading-scroll-lock")
+    }
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
@@ -370,6 +382,8 @@ export default function Home() {
                   excerpt: "A collection of my recent development work, ranging from full-stack applications to interactive web experiences.",
                   date: "Jan 2025 - 2026",
                   readTime: "All Projects",
+                  link: "/work",
+                  subtitle: "view the full collection",
                 },
                 {
                   title: "Hackathons",
