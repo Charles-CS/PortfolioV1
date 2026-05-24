@@ -132,7 +132,7 @@ export default function ProjectPage() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {project.tech.map((t) => (
               <span
                 key={t}
