@@ -1,26 +1,11 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const coreTechStacks = ["Next.js", "TypeScript", "React", "Node.js", "Tailwind", "PostgreSQL"]
-
-const extendedTechStacks = [
-  "React Native",
-  "Expo",
-  "Firebase",
-  "Python",
-  "OpenCV",
-  "TensorFlow",
-  "IPFS",
-  "Blender",
-  "Three.js",
-  "Vercel",
-]
-
 export default function AboutPage() {
-  const [showMoreTechStacks, setShowMoreTechStacks] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
   const [isScrollLocked, setIsScrollLocked] = useState(true)
@@ -165,57 +150,17 @@ export default function AboutPage() {
               {/* Removed hobby/interest tags as requested */}
             </div>
 
-            <aside className="space-y-5 rounded-2xl border border-border p-5 sm:p-6">
-              <div className="space-y-2">
-                <div className="text-sm text-muted-foreground font-mono">TECH STACK</div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  The site leans on a compact core stack, with the rest tucked away until you need it.
-                </p>
+            <aside className="overflow-hidden rounded-2xl border border-border bg-muted/20">
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src="/about-me-image/fb-pfp-removedbG.png"
+                  alt="About me portrait"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 34vw, 100vw"
+                  priority
+                />
               </div>
-
-              <div className="flex flex-wrap gap-2">
-                {["Full-Stack Web", "Mobile Dev", "Game Development", "Tools & Deployment"].map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1 text-xs text-muted-foreground border border-border rounded-full"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {coreTechStacks.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-2 text-sm rounded-full border border-border text-foreground/90"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setShowMoreTechStacks(!showMoreTechStacks)}
-                className="text-sm text-foreground border border-border rounded-full px-4 py-2 hover:border-muted-foreground/60 transition-colors duration-300"
-                aria-expanded={showMoreTechStacks}
-              >
-                {showMoreTechStacks ? "Show less" : "View more tech stacks"}
-              </button>
-
-              {showMoreTechStacks ? (
-                <div className="flex flex-wrap gap-2">
-                  {extendedTechStacks.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-2 text-sm rounded-full border border-border text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
             </aside>
           </div>
         </section>
