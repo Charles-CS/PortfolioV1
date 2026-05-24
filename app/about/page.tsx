@@ -252,11 +252,11 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <div className="text-foreground mb-2">Speaking</div>
+              <div className="text-foreground mb-2">Open to opportunities</div>
               <div className="border border-border rounded-md p-4 bg-background max-w-xs">
-                <p className="text-sm text-muted-foreground">Open to speaking about software, design, and interactive media at conferences and meetups.</p>
+                <p className="text-sm text-muted-foreground">Open to work and collaboration — available for full-time roles, freelance projects, and speaking engagements.</p>
                 <Link href="#" className="mt-4 inline-flex items-center text-sm font-medium text-foreground">
-                  Get in touch
+                  Contact me
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </div>
