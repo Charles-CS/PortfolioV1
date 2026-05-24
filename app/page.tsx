@@ -8,6 +8,8 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("")
   const [showHoverLabel, setShowHoverLabel] = useState(false)
   const [hoverLabelPosition, setHoverLabelPosition] = useState({ x: 0, y: 0 })
+  const [hoveredProjectIndex, setHoveredProjectIndex] = useState<number | null>(null)
+  const [projectHoverLabelPosition, setProjectHoverLabelPosition] = useState({ x: 0, y: 0 })
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function Home() {
     setIsDark(!isDark)
   }
 
-  const updateHoverLabelPosition = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const updateHoverLabelPosition = (event: React.MouseEvent<HTMLElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()
     const labelWidth = 92
     const labelHeight = 32
@@ -49,7 +51,10 @@ export default function Home() {
     const nextX = Math.min(Math.max(rawX, padding + labelWidth / 2), bounds.width - padding - labelWidth / 2)
     const nextY = Math.min(Math.max(rawY, padding + labelHeight / 2), bounds.height - padding - labelHeight / 2)
 
-    setHoverLabelPosition({ x: nextX, y: nextY })
+    const nextPosition = { x: nextX, y: nextY }
+
+    setHoverLabelPosition(nextPosition)
+    setProjectHoverLabelPosition(nextPosition)
   }
 
   return (
@@ -194,8 +199,16 @@ export default function Home() {
               ].map((job, index) => (
                 <div
                   key={index}
-                  className="group grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
+                  onMouseEnter={(event) => {
+                    setHoveredProjectIndex(index)
+                    updateHoverLabelPosition(event)
+                  }}
+                  onMouseMove={updateHoverLabelPosition}
+                  onMouseLeave={() => setHoveredProjectIndex(null)}
+                  className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-pointer overflow-hidden"
                 >
+                  <div className="pointer-events-none absolute inset-0 bg-foreground/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
                   <div className="lg:col-span-2">
                     <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
                       {job.year}
@@ -219,6 +232,16 @@ export default function Home() {
                         {tech}
                       </span>
                     ))}
+                  </div>
+
+                  <div
+                    className={`pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-150 ${hoveredProjectIndex === index ? "opacity-100" : "opacity-0"
+                      }`}
+                    style={{ left: projectHoverLabelPosition.x, top: projectHoverLabelPosition.y }}
+                  >
+                    <div className="rounded-full border border-border bg-background/90 px-3 py-1.5 text-[11px] leading-none whitespace-nowrap text-foreground shadow-sm backdrop-blur-sm">
+                      Click to view
+                    </div>
                   </div>
                 </div>
               ))}
