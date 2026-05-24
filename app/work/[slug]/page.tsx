@@ -93,23 +93,23 @@ export default function ProjectPage() {
           </div>
         </section>
 
-        {/* Info Row - Role / Responsibilities / URL */}
+        {/* Info Row - Role / Contributions / URL */}
         <section
           className={`py-10 sm:py-14 border-t border-neutral-800/60 transition-all duration-1000 delay-300 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 text-center">
             <div className="space-y-3">
               <div className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 font-mono">Role</div>
               <div className="text-sm text-neutral-300 leading-relaxed">{project.role}</div>
             </div>
             <div className="space-y-3">
-              <div className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 font-mono">Responsibilities</div>
+              <div className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 font-mono">Contributions</div>
               <div className="text-sm text-neutral-300 leading-relaxed">{project.responsibilities}</div>
             </div>
             <div className="space-y-3">
-              <div className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 font-mono">URL</div>
+              <div className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 font-mono">Live URL</div>
               {project.url !== "#" ? (
                 <a
                   href={project.url}
