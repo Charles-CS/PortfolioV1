@@ -227,26 +227,6 @@ export default function HackathonPage() {
           </div>
         </section>
 
-        {/* Tech Stack */}
-        {hackathon.tech && (
-          <section
-            className={`pb-10 sm:pb-14 transition-all duration-1000 delay-400 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="flex flex-wrap justify-center gap-2">
-              {hackathon.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1.5 text-[11px] tracking-wide text-muted-foreground border border-border rounded-full hover:border-foreground/50 hover:text-foreground transition-colors duration-300"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* Hero Image */}
         <section
           className={`pb-16 sm:pb-24 transition-all duration-1000 delay-500 ${

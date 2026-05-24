@@ -8,7 +8,6 @@ export const hackathons = [
     event: "National CS & IT Competition",
     achievement: "Top 8 Finalist (Out of 70+ Teams)",
     project: "Lunas",
-    tech: ["Next.js", "React", "PostgreSQL", "TailwindCSS"],
     image: "/hackathons-image/hackathon-2.png",
   },
   {
@@ -20,7 +19,6 @@ export const hackathons = [
     event: "CodeKada Hackathon 2026",
     achievement: "Participation",
     project: "RedQuest",
-    tech: ["Brainstorming", "Ideation", "Prototyping"],
     image: "/hackathons-image/hackathon-1.png",
   }
 ]
