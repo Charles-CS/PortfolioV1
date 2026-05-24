@@ -265,15 +265,9 @@ export default function AboutPage() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="space-y-8 h-full flex flex-col"
                   >
-                    <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-                      {activeTab === "Core" && "These are the foundational technologies of my development workflow. I have deep expertise in building scalable, production-ready systems using these frameworks and languages."}
-                      {activeTab === "Frontend" && "My toolkit for creating responsive, accessible, and highly interactive user interfaces with efficient components."}
-                      {activeTab === "Backend" && "The server-side technologies and databases I employ to build robust, secure, and performant data architectures."}
-                      {activeTab === "Tools & Cloud" && "The deployment, version control, and design tools that enable a seamless workflow from conception to production."}
-                      {activeTab === "Game Dev" && "The engines and suite of software I use to craft immersive digital 3D environments and interactives."}
-                    </p>
-
-                    <div className="flex flex-wrap gap-3 sm:gap-4 items-center">
+                    <div className="w-full">
+                      <div className="sr-only">Tech stack</div>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
                       {[
                         {
                           category: "Core",
@@ -328,16 +322,15 @@ export default function AboutPage() {
                           ],
                         },
                       ].find(tab => tab.category === activeTab)?.items.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 p-5 rounded-2xl border border-border/80 bg-background hover:bg-muted/10 transition-colors relative"
-                      >
-                        <i className={`${item.icon} text-3xl sm:text-4xl text-muted-foreground group-hover:text-foreground transition-colors`} />
-                        <span className="absolute bottom-3 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                          {item.name}
-                        </span>
+                        <div
+                          key={item.name}
+                          className="flex flex-col items-center justify-center gap-2"
+                        >
+                          <i className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-colors`} />
+                          <span className="text-xs sm:text-sm text-muted-foreground">{item.name}</span>
+                        </div>
+                      ))}
                       </div>
-                    ))}
                     </div>
                   </motion.div>
                 </AnimatePresence>
