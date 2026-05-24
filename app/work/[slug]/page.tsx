@@ -3,27 +3,32 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, use } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { getProjectBySlug, getNextProject, getPrevProject, projects } from "@/lib/projects"
 
-export default function ProjectPage() {
-  const params = useParams()
+export default function ProjectPage(props: { params: Promise<{ slug: string }> }) {
+  const params = use(props.params)
   const router = useRouter()
-  const slug = params.slug as string
+  const slug = params.slug
   const project = getProjectBySlug(slug)
   const [isLoaded, setIsLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [showLoadingSection, setShowLoadingSection] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 50)
-    return () => clearTimeout(timer)
-  }, [])
+    // Reveal project data after 2.8s total loading animation
+    const timer = setTimeout(() => setIsLoaded(true), 2800)
+    // Hide loading screen element entirely
+    const loadingScreenTimer = setTimeout(() => setShowLoadingSection(false), 2600)
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(loadingScreenTimer)
+    }
+  }, [slug])
 
   useEffect(() => {
     setImageLoaded(false)
-    setIsLoaded(false)
-    const timer = setTimeout(() => setIsLoaded(true), 50)
-    return () => clearTimeout(timer)
   }, [slug])
 
   if (!project) {
@@ -46,10 +51,64 @@ export default function ProjectPage() {
   const prevProject = getPrevProject(slug)
   const currentIndex = projects.findIndex((p) => p.slug === slug)
 
+  const loadingVariants = {
+    initial: { y: "0%" },
+    animate: { y: "0%" },
+    exit: { 
+      y: "-100%", 
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
+    }
+  }
+
+  const textVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
+    },
+    exit: { 
+      opacity: 0, 
+      y: -20, 
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } 
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
-      {/* Back Navigation */}
-      <nav
+    <>
+      <AnimatePresence>
+        {showLoadingSection && (
+          <motion.div
+            variants={loadingVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6 sm:p-10"
+          >
+            <motion.div
+              variants={textVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
+            >
+              <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground font-mono">
+                hello there, meet
+              </span>
+              <h1 
+                className="text-4xl sm:text-6xl md:text-7xl font-light text-foreground"
+                style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+              >
+                {project.name}
+              </h1>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
+        {/* Back Navigation */}
+        <nav
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 lg:px-16 py-6 transition-all duration-700 ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
         } bg-background/80 backdrop-blur-md`}
@@ -215,5 +274,6 @@ export default function ProjectPage() {
         </section>
       </main>
     </div>
+    </>
   )
 }
