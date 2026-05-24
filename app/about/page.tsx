@@ -11,6 +11,7 @@ export default function AboutPage() {
   const [isScrollLocked, setIsScrollLocked] = useState(true)
   const [showScrollbarCover, setShowScrollbarCover] = useState(true)
   const [isScrollbarCoverFading, setIsScrollbarCoverFading] = useState(false)
+  const [isPortraitHovered, setIsPortraitHovered] = useState(false)
 
   useEffect(() => {
     document.documentElement.classList.toggle("loading-scroll-lock", isScrollLocked)
@@ -157,15 +158,30 @@ export default function AboutPage() {
               {/* Removed hobby/interest tags as requested */}
             </div>
 
-            <aside className="overflow-hidden rounded-2xl border border-border bg-muted/20">
+            <aside
+              className="overflow-hidden rounded-2xl border border-border bg-muted/20"
+              onMouseEnter={() => setIsPortraitHovered(true)}
+              onMouseLeave={() => setIsPortraitHovered(false)}
+            >
               <div className="relative aspect-[4/5] w-full">
                 <Image
                   src="/about-me-image/fb-pfp-removedbG.png"
                   alt="About me portrait"
                   fill
-                  className="object-cover"
+                  className={`object-cover transition-opacity duration-300 ease-out ${
+                    isPortraitHovered ? "opacity-0" : "opacity-100"
+                  }`}
                   sizes="(min-width: 1024px) 34vw, 100vw"
                   priority
+                />
+                <Image
+                  src="/about-me-image/fb-pfp-hover-image.png"
+                  alt="About me portrait hover"
+                  fill
+                  className={`object-cover transition-opacity duration-300 ease-out ${
+                    isPortraitHovered ? "opacity-100" : "opacity-0"
+                  }`}
+                  sizes="(min-width: 1024px) 34vw, 100vw"
                 />
               </div>
             </aside>
