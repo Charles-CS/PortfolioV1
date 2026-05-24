@@ -169,6 +169,7 @@ export default function Home() {
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
+                  slug: "kumpirma",
                   year: "2026",
                   role: "Kumpirma",
                   company: "",
@@ -176,6 +177,7 @@ export default function Home() {
                   tech: ["Next.js", "TypeScript", "Python", "OpenCV", "TensorFlow", "PostgreSQL", "IPFS"],
                 },
                 {
+                  slug: "redquest",
                   year: "2026",
                   role: "RedQuest",
                   company: "",
@@ -183,6 +185,7 @@ export default function Home() {
                   tech: ["React Native", "Expo Go", "Tailwind", "Railway", "PostgreSQL"],
                 },
                 {
+                  slug: "lunas",
                   year: "2026",
                   role: "Lunas",
                   company: "",
@@ -190,6 +193,7 @@ export default function Home() {
                   tech: ["Next.Js", "React", "PostgreSQL", "Password Hashing", "RBAC", "TailwindCSS"],
                 },
                 {
+                  slug: "toka",
                   year: "2026",
                   role: "Toka",
                   company: "",
@@ -197,15 +201,16 @@ export default function Home() {
                   tech: ["React Native", "TypeScript", "Firebase"],
                 },
               ].map((job, index) => (
-                <div
+                <Link
                   key={index}
+                  href={`/work/${job.slug}`}
                   onMouseEnter={(event) => {
                     setHoveredProjectIndex(index)
                     updateHoverLabelPosition(event)
                   }}
                   onMouseMove={updateHoverLabelPosition}
                   onMouseLeave={() => setHoveredProjectIndex(null)}
-                  className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-pointer overflow-hidden"
+                  className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-pointer overflow-hidden block"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-foreground/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -243,7 +248,7 @@ export default function Home() {
                       Click to view
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
