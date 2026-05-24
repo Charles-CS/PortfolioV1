@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Star, LayoutTemplate, Database, Settings, Gamepad2 } from "lucide-react"
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState("Core")
+  const [activeTab, setActiveTab] = useState("Frontend")
   const [isLoaded, setIsLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
   const [isScrollLocked, setIsScrollLocked] = useState(true)
@@ -223,7 +223,6 @@ export default function AboutPage() {
               {/* Vertical Navigation for larger screens, Horizontal scroll for mobile */}
               <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 sm:gap-3 pb-4 lg:pb-0 hide-scrollbar -mx-6 px-6 lg:mx-0 lg:px-0">
                 {[
-                  { name: "Core", icon: Star },
                   { name: "Frontend", icon: LayoutTemplate },
                   { name: "Backend", icon: Database },
                   { name: "Tools & Cloud", icon: Settings },
@@ -267,35 +266,28 @@ export default function AboutPage() {
                   >
                     <div className="w-full">
                       <div className="sr-only">Tech stack</div>
-                      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-start">
                       {[
-                        {
-                          category: "Core",
-                          items: [
-                            { name: "JavaScript", icon: "devicon-javascript-plain" },
-                            { name: "TypeScript", icon: "devicon-typescript-plain" },
-                            { name: "Java", icon: "devicon-java-plain" },
-                            { name: "Python", icon: "devicon-python-plain" },
-                            { name: "PHP", icon: "devicon-php-plain" },
-                            { name: "C++", icon: "devicon-cplusplus-plain" },
-                            { name: "C#", icon: "devicon-csharp-plain" },
-                          ],
-                        },
                         {
                           category: "Frontend",
                           items: [
+                            { name: "HTML5", icon: "devicon-html5-plain" },
+                            { name: "CSS3", icon: "devicon-css3-plain" },
+                            { name: "JavaScript", icon: "devicon-javascript-plain" },
+                            { name: "TypeScript", icon: "devicon-typescript-plain" },
                             { name: "React", icon: "devicon-react-original" },
                             { name: "Next.js", icon: "devicon-nextjs-plain" },
                             { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain" },
-                            { name: "HTML5", icon: "devicon-html5-plain" },
-                            { name: "CSS3", icon: "devicon-css3-plain" },
                           ],
                         },
                         {
                           category: "Backend",
                           items: [
-                            { name: "Node.js", icon: "devicon-nodejs-plain" },
+                            { name: "Java", icon: "devicon-java-plain" },
+                            { name: "Python", icon: "devicon-python-plain" },
+                            { name: "PHP", icon: "devicon-php-plain" },
                             { name: "Laravel", icon: "devicon-laravel-plain" },
+                            { name: "Node.js", icon: "devicon-nodejs-plain" },
                             { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
                             { name: "Supabase", icon: "devicon-supabase-plain" },
                             { name: "Prisma", icon: "devicon-prisma-original" },
@@ -307,7 +299,7 @@ export default function AboutPage() {
                             { name: "Git", icon: "devicon-git-plain" },
                             { name: "GitHub", icon: "devicon-github-original" },
                             { name: "Docker", icon: "devicon-docker-plain" },
-                            { name: "AWS", icon: "devicon-amazonwebservices-original" },
+                            { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark" },
                             { name: "Vercel", icon: "devicon-vercel-original" },
                             { name: "Figma", icon: "devicon-figma-plain" },
                           ],
@@ -316,8 +308,10 @@ export default function AboutPage() {
                           category: "Game Dev",
                           items: [
                             { name: "Unreal Engine", icon: "devicon-unrealengine-original" },
-                            { name: "Unity", icon: "devicon-unity-original" },
+                            { name: "Unity", icon: "devicon-unity-plain" },
                             { name: "Godot", icon: "devicon-godot-plain" },
+                            { name: "C++", icon: "devicon-cplusplus-plain" },
+                            { name: "C#", icon: "devicon-csharp-plain" },
                             { name: "Blender", icon: "devicon-blender-original" },
                           ],
                         },
@@ -327,7 +321,7 @@ export default function AboutPage() {
                           className="flex flex-col items-center justify-center gap-2"
                         >
                           <i className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-colors`} />
-                          <span className="text-xs sm:text-sm text-muted-foreground">{item.name}</span>
+                          <span className="text-xs sm:text-sm text-muted-foreground text-center">{item.name}</span>
                         </div>
                       ))}
                       </div>
