@@ -219,28 +219,29 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[250px_1fr] lg:gap-16 items-start">
+            <div className="grid gap-8 lg:grid-cols-[250px_1fr] lg:gap-16 lg:items-stretch items-start">
               {/* Vertical Navigation for larger screens, Horizontal scroll for mobile */}
               <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 sm:gap-3 pb-4 lg:pb-0 hide-scrollbar -mx-6 px-6 lg:mx-0 lg:px-0">
                 {[
-                  { name: "Core" },
-                  { name: "Frontend" },
-                  { name: "Backend" },
-                  { name: "Tools & Cloud" },
-                  { name: "Game Dev" },
+                  { name: "Core", icon: Star },
+                  { name: "Frontend", icon: LayoutTemplate },
+                  { name: "Backend", icon: Database },
+                  { name: "Tools & Cloud", icon: Settings },
+                  { name: "Game Dev", icon: Gamepad2 },
                 ].map((tab) => {
                   const isActive = activeTab === tab.name
                   return (
                     <button
                       key={tab.name}
                       onClick={() => setActiveTab(tab.name)}
-                      className={`relative flex items-center whitespace-nowrap px-4 py-3 text-sm font-mono tracking-wider transition-all duration-300 rounded-lg text-left ${
+                      className={`relative flex items-center gap-3 whitespace-nowrap px-4 py-3 text-sm font-mono tracking-wider transition-all duration-300 rounded-lg text-left ${
                         isActive 
                           ? "bg-foreground text-background" 
                           : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
                       }`}
                     >
-                      {tab.name}
+                      <tab.icon className="w-4 h-4 z-10" />
+                      <span className="z-10">{tab.name}</span>
                       {isActive && (
                         <motion.div
                           layoutId="activeTabIndicator"
@@ -254,7 +255,7 @@ export default function AboutPage() {
               </div>
 
               {/* Dynamic Content */}
-              <div className="min-h-[250px]">
+              <div className="h-full">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
@@ -262,7 +263,7 @@ export default function AboutPage() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 10 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-8"
+                    className="space-y-8 h-full flex flex-col"
                   >
                     <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
                       {activeTab === "Core" && "These are the foundational technologies of my development workflow. I have deep expertise in building scalable, production-ready systems using these frameworks and languages."}
@@ -272,7 +273,7 @@ export default function AboutPage() {
                       {activeTab === "Game Dev" && "The engines and suite of software I use to craft immersive digital 3D environments and interactives."}
                     </p>
 
-                    <div className="flex flex-wrap gap-3 sm:gap-4">
+                    <div className="flex flex-wrap gap-3 sm:gap-4 items-center">
                       {[
                         {
                           category: "Core",
@@ -327,16 +328,16 @@ export default function AboutPage() {
                           ],
                         },
                       ].find(tab => tab.category === activeTab)?.items.map((item) => (
-                        <div 
-                          key={item.name} 
-                          className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border/80 bg-background/50 text-muted-foreground hover:text-foreground hover:bg-muted/30 hover:border-border transition-all cursor-default"
-                        >
-                          <i className={`${item.icon} text-lg`}></i>
-                          <span className="text-sm font-medium tracking-wide">
-                            {item.name}
-                          </span>
-                        </div>
-                      ))}
+                      <div
+                        key={item.name}
+                        className="group flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 p-5 rounded-2xl border border-border/80 bg-background hover:bg-muted/10 transition-colors relative"
+                      >
+                        <i className={`${item.icon} text-3xl sm:text-4xl text-muted-foreground group-hover:text-foreground transition-colors`} />
+                        <span className="absolute bottom-3 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          {item.name}
+                        </span>
+                      </div>
+                    ))}
                     </div>
                   </motion.div>
                 </AnimatePresence>
