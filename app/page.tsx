@@ -1,9 +1,72 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
+import { useEffect, useRef, useState, useCallback } from "react"
+
+// Aggressively preload a route by fetching its HTML — this forces Next.js
+// dev server to compile the route in the background so it's instant on click
+function preloadRoute(path: string) {
+  fetch(path, { priority: "low" as RequestPriority }).catch(() => {})
+}
+
+// Map of project slugs to display names for the loading screen
+const PROJECT_NAMES: Record<string, string> = {
+  kumpirma: "Kumpirma",
+  redquest: "RedQuest",
+  lunas: "Lunas",
+  toka: "Toka",
+}
 
 export default function Home() {
+  const router = useRouter()
+
+  // Transition overlay state — shows loading screen INSTANTLY on click
+  const [transition, setTransition] = useState<{
+    active: boolean
+    label: string
+    subtitle: string
+  }>({ active: false, label: "", subtitle: "" })
+
+  // Immediately trigger compilation of all target routes on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      preloadRoute("/about")
+      preloadRoute("/work/kumpirma")
+      preloadRoute("/work/redquest")
+      preloadRoute("/work/lunas")
+      preloadRoute("/work/toka")
+
+      router.prefetch("/about")
+      router.prefetch("/work/kumpirma")
+      router.prefetch("/work/redquest")
+      router.prefetch("/work/lunas")
+      router.prefetch("/work/toka")
+
+      import("framer-motion").catch(() => {})
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [router])
+
+  // Navigate with instant loading overlay
+  const navigateWithTransition = useCallback(
+    (path: string, label: string, subtitle: string) => {
+      // Show the loading screen IMMEDIATELY (it's in our own DOM, zero delay)
+      setTransition({ active: true, label, subtitle })
+
+      // Lock scroll
+      document.documentElement.classList.add("loading-scroll-lock")
+      document.body.classList.add("loading-scroll-lock")
+
+      // Navigate after a tiny delay to let the overlay render
+      requestAnimationFrame(() => {
+        router.push(path)
+      })
+    },
+    [router],
+  )
+
   const [isDark, setIsDark] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [showHoverLabel, setShowHoverLabel] = useState(false)
@@ -59,6 +122,24 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
+      {/* ===== INSTANT TRANSITION OVERLAY ===== */}
+      {/* This is part of the home page's own DOM, so it renders with ZERO delay */}
+      {transition.active && (
+        <div className="fixed inset-0 z-[200] bg-background flex flex-col items-center justify-center p-6 sm:p-10">
+          <div className="text-center space-y-4 sm:space-y-6 flex flex-col items-center animate-loading-text">
+            <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
+              {transition.subtitle}
+            </span>
+            <h1
+              className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground"
+              style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+            >
+              {transition.label}
+            </h1>
+          </div>
+        </div>
+      )}
+
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
           {["intro", "work", "thoughts", "connect"].map((section) => (
@@ -81,13 +162,19 @@ export default function Home() {
           className="section-reveal section-reveal--intro min-h-screen flex items-center"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full items-start">
-            <Link
+            {/* About Me link — intercept click to show instant loading */}
+            <a
               href="/about"
+              onClick={(e) => {
+                if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+                e.preventDefault()
+                navigateWithTransition("/about", "About Me", "glad you're here")
+              }}
               onMouseEnter={(event) => {
                 setShowHoverLabel(true)
-                updateHoverLabelPosition(event)
+                updateHoverLabelPosition(event as unknown as React.MouseEvent<HTMLElement>)
               }}
-              onMouseMove={updateHoverLabelPosition}
+              onMouseMove={(event) => updateHoverLabelPosition(event as unknown as React.MouseEvent<HTMLElement>)}
               onMouseLeave={() => setShowHoverLabel(false)}
               className="group lg:col-span-3 relative block space-y-6 sm:space-y-8 rounded-3xl p-4 -m-4 cursor-crosshair focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20"
               aria-label="Go to the About Me page"
@@ -127,7 +214,7 @@ export default function Home() {
                   Click for more
                 </div>
               </div>
-            </Link>
+            </a>
 
             <div className="lg:col-span-2 flex flex-col justify-center space-y-6 sm:space-y-8 mt-8 lg:mt-0 lg:pt-24">
               <div className="space-y-4">
@@ -203,14 +290,23 @@ export default function Home() {
                   tech: ["React Native", "TypeScript", "Firebase"],
                 },
               ].map((job, index) => (
-                <Link
+                <a
                   key={index}
                   href={`/work/${job.slug}`}
+                  onClick={(e) => {
+                    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+                    e.preventDefault()
+                    navigateWithTransition(
+                      `/work/${job.slug}`,
+                      PROJECT_NAMES[job.slug] || job.role,
+                      "hello there, meet"
+                    )
+                  }}
                   onMouseEnter={(event) => {
                     setHoveredProjectIndex(index)
-                    updateHoverLabelPosition(event)
+                    updateHoverLabelPosition(event as unknown as React.MouseEvent<HTMLElement>)
                   }}
-                  onMouseMove={updateHoverLabelPosition}
+                  onMouseMove={(event) => updateHoverLabelPosition(event as unknown as React.MouseEvent<HTMLElement>)}
                   onMouseLeave={() => setHoveredProjectIndex(null)}
                   className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-crosshair overflow-hidden block"
                 >
@@ -250,7 +346,7 @@ export default function Home() {
                       Click to view
                     </div>
                   </div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -375,7 +471,7 @@ export default function Home() {
                   { name: "Facebook", handle: "Charles Platon", url: "https://www.facebook.com/charles.platon.573221" },
                   { name: "LinkedIn", handle: "charles-platon", url: "https://www.linkedin.com/in/charles-platon" },
                 ].map((social) => (
-                  <Link
+                  <a
                     key={social.name}
                     href={social.url}
                     target={social.url !== "#" ? "_blank" : undefined}
@@ -388,7 +484,7 @@ export default function Home() {
                       </div>
                       <div className="text-sm text-muted-foreground">{social.handle}</div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

@@ -251,4 +251,20 @@
       transform: translateX(0);
     }
   }
+
+  @keyframes loading-text-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-loading-text {
+    opacity: 0;
+    animation: loading-text-reveal 0.8s cubic-bezier(0.76, 0, 0.24, 1) 0.5s forwards;
+  }
 }
