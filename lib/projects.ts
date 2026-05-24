@@ -31,7 +31,7 @@ export const projects: Project[] = [
     name: "RedQuest",
     tagline: "Blood Donation Mobile Platform",
     description:
-      "Mobile platform that connects blood requesters with nearby donors and enables rapid delivery to hospitals — gamifying the donation experience with quests, XP, badges, and real-time tracking.",
+      "A mobile platform that connects blood requesters with nearby compatible donors, dispatching a motorcycle rider to transport the donor to the hospital — all within minutes.",
     image: "/selected-projects-image/project-1.png",
     role: "Mobile Developer",
     responsibilities:
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     name: "Lunas",
     tagline: "Medical Passport Web Platform",
     description:
-      "Secure web platform giving clinicians instant access to patient health data via QR code for emergencies — encrypting complete medical histories into permanent, verifiable digital passports.",
+      "A Secure web platform giving clinicians instant access to patient health data via QR code for emergencies — encrypting complete medical histories into permanent, verifiable digital passports.",
     image: "/selected-projects-image/project-9.png",
     role: "Full-Stack Developer",
     responsibilities:
@@ -83,11 +83,11 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    slug: "breathe",
-    name: "Breathe",
+    slug: "lumina",
+    name: "Lumina",
     tagline: "Modern Website Builder",
     description:
-      "Dark-themed website builder that lets you create top-tier, production-ready website pages in seconds — with intuitive drag-and-drop components and real-time preview.",
+      "A modern website builder that lets you create top-tier, production-ready website pages in seconds — with intuitive drag-and-drop components and real-time preview.",
     image: "/selected-projects-image/project-4.png",
     role: "Frontend Developer",
     responsibilities:
