@@ -373,8 +373,8 @@ export default function AboutPage() {
                               key={item.name}
                               className="flex flex-col items-center justify-center gap-2"
                             >
-                              <i className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-colors`} />
-                              <span className="text-xs sm:text-sm text-muted-foreground text-center">{item.name}</span>
+                              <i aria-hidden="true" className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-colors`} />
+                              <span className="sr-only">{item.name}</span>
                             </div>
                           ))}
                         </div>
