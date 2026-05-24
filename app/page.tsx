@@ -88,7 +88,7 @@ export default function Home() {
               }}
               onMouseMove={updateHoverLabelPosition}
               onMouseLeave={() => setShowHoverLabel(false)}
-              className="group lg:col-span-3 relative block space-y-6 sm:space-y-8 rounded-3xl p-4 -m-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20"
+              className="group lg:col-span-3 relative block space-y-6 sm:space-y-8 rounded-3xl p-4 -m-4 cursor-crosshair focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20"
               aria-label="Go to the About Me page"
             >
               <div className="space-y-3 sm:space-y-2">
@@ -210,7 +210,7 @@ export default function Home() {
                   }}
                   onMouseMove={updateHoverLabelPosition}
                   onMouseLeave={() => setHoveredProjectIndex(null)}
-                  className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-pointer overflow-hidden block"
+                  className="group relative grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-all duration-500 cursor-crosshair overflow-hidden block"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-foreground/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -291,7 +291,7 @@ export default function Home() {
               ].map((post, index) => (
                 <article
                   key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-crosshair"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
