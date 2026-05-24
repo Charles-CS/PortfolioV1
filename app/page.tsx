@@ -36,12 +36,14 @@ export default function Home() {
       preloadRoute("/work/redquest")
       preloadRoute("/work/lunas")
       preloadRoute("/work/toka")
+      preloadRoute("/hackathons")
 
       router.prefetch("/about")
       router.prefetch("/work/kumpirma")
       router.prefetch("/work/redquest")
       router.prefetch("/work/lunas")
       router.prefetch("/work/toka")
+      router.prefetch("/hackathons")
 
       import("framer-motion").catch(() => {})
     }, 100)
@@ -374,6 +376,8 @@ export default function Home() {
                   excerpt: "Intense 48-hour sprints of innovation and collaboration, building functional prototypes to solve real-world challenges.",
                   date: "May 2026",
                   readTime: "Experiences",
+                  link: "/hackathons",
+                  subtitle: "building the future",
                 },
                 {
                   title: "BSCS QuizBee Champion",
@@ -387,42 +391,56 @@ export default function Home() {
                   date: "Jan 2024 - 2026",
                   readTime: "Recognitions",
                 },
-              ].map((post, index) => (
-                <article
-                  key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-crosshair"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
-                      <span>{post.date}</span>
-                      <span>{post.readTime}</span>
+              ].map((post, index) => {
+                const isLink = !!post.link;
+                const Wrapper = isLink ? 'a' : 'article';
+                const wrapperProps = isLink ? {
+                  href: post.link,
+                  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+                    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+                    e.preventDefault();
+                    navigateWithTransition(post.link!, post.title, post.subtitle || "glad you're here");
+                  }
+                } : {};
+
+                return (
+                  <Wrapper
+                    key={index}
+                    {...wrapperProps}
+                    className="group block p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-crosshair"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
+                        <span>{post.date}</span>
+                        <span>{post.readTime}</span>
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
+
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                        <span>View more</span>
+                        <svg
+                          className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </div>
                     </div>
-
-                    <h3 className="text-lg sm:text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
-
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      <span>View more</span>
-                      <svg
-                        className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-              ))}
+                  </Wrapper>
+                )
+              })}
             </div>
           </div>
         </section>
