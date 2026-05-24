@@ -9,6 +9,7 @@ export default function AllProjectsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set())
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [viewMode, setViewMode] = useState<"list" | "grid">("list")
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 50)
@@ -52,7 +53,7 @@ export default function AllProjectsPage() {
         <section
           className={`pt-28 sm:pt-36 pb-12 sm:pb-16 transition-all duration-1000 delay-100 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } flex flex-col md:flex-row md:items-end justify-between gap-6`}
         >
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
@@ -62,11 +63,36 @@ export default function AllProjectsPage() {
               A curated collection of my work spanning web development, mobile apps, AI systems, and game design.
             </p>
           </div>
+
+          <div className="flex items-center gap-2 bg-neutral-900/50 p-1.5 rounded-full border border-neutral-800/80">
+            <button
+              onClick={() => setViewMode("list")}
+              className={`p-2 rounded-full transition-all duration-300 ${
+                viewMode === "list" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:text-neutral-300"
+              }`}
+              title="List View"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`p-2 rounded-full transition-all duration-300 ${
+                viewMode === "grid" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:text-neutral-300"
+              }`}
+              title="Grid View"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+          </div>
         </section>
 
         {/* Projects Grid */}
         <section className="pb-20 sm:pb-32">
-          <div className="grid grid-cols-1 gap-16 sm:gap-20">
+          <div className={`grid ${viewMode === "list" ? "grid-cols-1 gap-16 sm:gap-20" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"} transition-all duration-500`}>
             {projects.map((project, index) => (
               <Link
                 key={project.slug}
@@ -104,15 +130,17 @@ export default function AllProjectsPage() {
                 </div>
 
                 {/* Info */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div className={`flex flex-col ${viewMode === "list" ? "sm:flex-row sm:items-start sm:justify-between" : "items-start"} gap-3`}>
                   <div className="space-y-1.5">
-                    <h2 className="text-xl sm:text-2xl font-light group-hover:text-neutral-300 transition-colors duration-300">
+                    <h2 className={`${viewMode === "list" ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"} font-light group-hover:text-neutral-300 transition-colors duration-300`}>
                       {project.name}
                     </h2>
-                    <p className="text-sm text-neutral-500 max-w-md leading-relaxed">{project.tagline}</p>
+                    <p className={`text-sm text-neutral-500 max-w-md leading-relaxed ${viewMode === "grid" && "line-clamp-2"}`}>
+                      {project.tagline}
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-3 sm:pt-1">
+                  <div className={`flex items-center gap-3 ${viewMode === "list" ? "sm:pt-1" : "pt-1"}`}>
                     <span className="text-xs tracking-[0.2em] text-neutral-600 font-mono">{project.year}</span>
                     <svg
                       className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"
