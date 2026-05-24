@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState, useCallback } from "react"
+import { useTheme } from "next-themes"
 
 // Aggressively preload a route by fetching its HTML — this forces Next.js
 // dev server to compile the route in the background so it's instant on click
@@ -20,6 +21,7 @@ const PROJECT_NAMES: Record<string, string> = {
 
 export default function Home() {
   const router = useRouter()
+  const { resolvedTheme, setTheme } = useTheme()
 
   // Transition overlay state — shows loading screen INSTANTLY on click
   const [transition, setTransition] = useState<{
@@ -71,13 +73,17 @@ export default function Home() {
     [router],
   )
 
-  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [showHoverLabel, setShowHoverLabel] = useState(false)
   const [hoverLabelPosition, setHoverLabelPosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectIndex, setHoveredProjectIndex] = useState<number | null>(null)
   const [projectHoverLabelPosition, setProjectHoverLabelPosition] = useState({ x: 0, y: 0 })
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.remove("loading-scroll-lock")
@@ -88,10 +94,6 @@ export default function Home() {
       document.body.classList.remove("loading-scroll-lock")
     }
   }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -114,8 +116,10 @@ export default function Home() {
   }, [])
 
   const toggleTheme = () => {
-    setIsDark(!isDark)
+    setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   const updateHoverLabelPosition = (event: React.MouseEvent<HTMLElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()

@@ -3,24 +3,28 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
 import { Star, LayoutTemplate, Database, Settings, Gamepad2, ArrowRight } from "lucide-react"
 
 export default function AboutPage() {
+  const { resolvedTheme, setTheme } = useTheme()
   const [activeTab, setActiveTab] = useState("Frontend")
   const [isLoaded, setIsLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
   const [isScrollLocked, setIsScrollLocked] = useState(true)
   const [isPortraitHovered, setIsPortraitHovered] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
+    setMounted(true)
+  }, [])
 
   const toggleTheme = () => {
-    setIsDark(!isDark)
+    setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   useEffect(() => {
     document.documentElement.classList.toggle("loading-scroll-lock", isScrollLocked)
