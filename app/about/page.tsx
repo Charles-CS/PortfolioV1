@@ -11,8 +11,6 @@ export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
   const [isScrollLocked, setIsScrollLocked] = useState(true)
-  const [showScrollbarCover, setShowScrollbarCover] = useState(true)
-  const [isScrollbarCoverFading, setIsScrollbarCoverFading] = useState(false)
   const [isPortraitHovered, setIsPortraitHovered] = useState(false)
   const [isDark, setIsDark] = useState(false)
 
@@ -72,7 +70,6 @@ export default function AboutPage() {
       <AnimatePresence
         onExitComplete={() => {
           setIsScrollLocked(false)
-          setIsScrollbarCoverFading(true)
         }}
       >
         {showLoadingSection && (
@@ -102,22 +99,6 @@ export default function AboutPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {showScrollbarCover ? (
-        <motion.div
-          aria-hidden="true"
-          className="pointer-events-none fixed right-0 top-0 z-[99] h-dvh w-[18px] bg-background"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          onAnimationComplete={() => {
-            if (isScrollbarCoverFading) {
-              setShowScrollbarCover(false)
-              setIsScrollbarCoverFading(false)
-            }
-          }}
-        />
-      ) : null}
 
       <main className="min-h-screen bg-background text-foreground">
         <div className={`max-w-5xl mx-auto px-6 sm:px-8 lg:px-16 pt-10 sm:pt-14 pb-0 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
