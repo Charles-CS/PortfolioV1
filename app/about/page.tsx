@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const coreTechStacks = ["Next.js", "TypeScript", "React", "Node.js", "Tailwind", "PostgreSQL"]
 
@@ -20,10 +21,77 @@ const extendedTechStacks = [
 
 export default function AboutPage() {
   const [showMoreTechStacks, setShowMoreTechStacks] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [showLoadingSection, setShowLoadingSection] = useState(true)
+
+  useEffect(() => {
+    // Reveal data after 2.8s total loading animation
+    const timer = setTimeout(() => setIsLoaded(true), 2800)
+    // Hide loading screen element entirely
+    const loadingScreenTimer = setTimeout(() => setShowLoadingSection(false), 2600)
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(loadingScreenTimer)
+    }
+  }, [])
+
+  const loadingVariants = {
+    initial: { y: "0%" },
+    exit: { 
+      y: "-100%", 
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
+    }
+  }
+
+  const textVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.5 } 
+    },
+    exit: { 
+      opacity: 0, 
+      y: -20, 
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } 
+    }
+  }
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-16 py-10 sm:py-14">
+    <>
+      <AnimatePresence>
+        {showLoadingSection && (
+          <motion.div
+            variants={loadingVariants}
+            initial="initial"
+            exit="exit"
+            className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6 sm:p-10"
+          >
+            <motion.div
+              variants={textVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
+            >
+              <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
+                glad you're here
+              </span>
+              <h1 
+                className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground"
+                style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+              >
+                About Me
+              </h1>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <main className="min-h-screen bg-background text-foreground">
+        <div className={`max-w-5xl mx-auto px-6 sm:px-8 lg:px-16 py-10 sm:py-14 transition-all duration-1000 ${
+          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
@@ -136,5 +204,6 @@ export default function AboutPage() {
         </section>
       </div>
     </main>
+    </>
   )
 }
