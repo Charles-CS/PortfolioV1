@@ -22,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>{children}</body>
     </html>
   )

@@ -4,8 +4,10 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Star, LayoutTemplate, Database, Settings, Gamepad2 } from "lucide-react"
 
 export default function AboutPage() {
+  const [activeTab, setActiveTab] = useState("Core")
   const [isLoaded, setIsLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
   const [isScrollLocked, setIsScrollLocked] = useState(true)
@@ -192,15 +194,153 @@ export default function AboutPage() {
           <div className="grid gap-6 sm:grid-cols-3 text-sm text-muted-foreground">
             <div>
               <div className="text-foreground mb-2">Focus</div>
-              Clean interfaces, useful motion, and solid architecture.
+              Game systems, full‑stack web applications, and polished user experiences.
             </div>
             <div>
               <div className="text-foreground mb-2">Approach</div>
-              Minimal by default, with details revealed only when needed.
+              Prototype quickly, iterate with feedback, and keep designs minimal and accessible.
             </div>
             <div>
               <div className="text-foreground mb-2">Outside code</div>
-              Blender, creative builds, and collaborative hackathons.
+              3D modeling in Blender, level design, creative builds, and hackathon collaborations.
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-24 border-t border-border">
+          <div className="space-y-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.35em] text-muted-foreground">
+                <span className="h-px w-8 bg-border" />
+                The Arsenal
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight">
+                Tech Stack
+              </h2>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-[250px_1fr] lg:gap-16 items-start">
+              {/* Vertical Navigation for larger screens, Horizontal scroll for mobile */}
+              <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 sm:gap-3 pb-4 lg:pb-0 hide-scrollbar -mx-6 px-6 lg:mx-0 lg:px-0">
+                {[
+                  { name: "Core" },
+                  { name: "Frontend" },
+                  { name: "Backend" },
+                  { name: "Tools & Cloud" },
+                  { name: "Game Dev" },
+                ].map((tab) => {
+                  const isActive = activeTab === tab.name
+                  return (
+                    <button
+                      key={tab.name}
+                      onClick={() => setActiveTab(tab.name)}
+                      className={`relative flex items-center whitespace-nowrap px-4 py-3 text-sm font-mono tracking-wider transition-all duration-300 rounded-lg text-left ${
+                        isActive 
+                          ? "bg-foreground text-background" 
+                          : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {tab.name}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeTabIndicator"
+                          className="absolute inset-0 bg-foreground rounded-lg -z-10"
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Dynamic Content */}
+              <div className="min-h-[250px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="space-y-8"
+                  >
+                    <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+                      {activeTab === "Core" && "These are the foundational technologies of my development workflow. I have deep expertise in building scalable, production-ready systems using these frameworks and languages."}
+                      {activeTab === "Frontend" && "My toolkit for creating responsive, accessible, and highly interactive user interfaces with efficient components."}
+                      {activeTab === "Backend" && "The server-side technologies and databases I employ to build robust, secure, and performant data architectures."}
+                      {activeTab === "Tools & Cloud" && "The deployment, version control, and design tools that enable a seamless workflow from conception to production."}
+                      {activeTab === "Game Dev" && "The engines and suite of software I use to craft immersive digital 3D environments and interactives."}
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 sm:gap-4">
+                      {[
+                        {
+                          category: "Core",
+                          items: [
+                            { name: "JavaScript", icon: "devicon-javascript-plain" },
+                            { name: "TypeScript", icon: "devicon-typescript-plain" },
+                            { name: "Java", icon: "devicon-java-plain" },
+                            { name: "Python", icon: "devicon-python-plain" },
+                            { name: "PHP", icon: "devicon-php-plain" },
+                            { name: "C++", icon: "devicon-cplusplus-plain" },
+                            { name: "C#", icon: "devicon-csharp-plain" },
+                          ],
+                        },
+                        {
+                          category: "Frontend",
+                          items: [
+                            { name: "React", icon: "devicon-react-original" },
+                            { name: "Next.js", icon: "devicon-nextjs-plain" },
+                            { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain" },
+                            { name: "HTML5", icon: "devicon-html5-plain" },
+                            { name: "CSS3", icon: "devicon-css3-plain" },
+                          ],
+                        },
+                        {
+                          category: "Backend",
+                          items: [
+                            { name: "Node.js", icon: "devicon-nodejs-plain" },
+                            { name: "Laravel", icon: "devicon-laravel-plain" },
+                            { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+                            { name: "Supabase", icon: "devicon-supabase-plain" },
+                            { name: "Prisma", icon: "devicon-prisma-original" },
+                          ],
+                        },
+                        {
+                          category: "Tools & Cloud",
+                          items: [
+                            { name: "Git", icon: "devicon-git-plain" },
+                            { name: "GitHub", icon: "devicon-github-original" },
+                            { name: "Docker", icon: "devicon-docker-plain" },
+                            { name: "AWS", icon: "devicon-amazonwebservices-original" },
+                            { name: "Vercel", icon: "devicon-vercel-original" },
+                            { name: "Figma", icon: "devicon-figma-plain" },
+                          ],
+                        },
+                        {
+                          category: "Game Dev",
+                          items: [
+                            { name: "Unreal Engine", icon: "devicon-unrealengine-original" },
+                            { name: "Unity", icon: "devicon-unity-original" },
+                            { name: "Godot", icon: "devicon-godot-plain" },
+                            { name: "Blender", icon: "devicon-blender-original" },
+                          ],
+                        },
+                      ].find(tab => tab.category === activeTab)?.items.map((item) => (
+                        <div 
+                          key={item.name} 
+                          className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border/80 bg-background/50 text-muted-foreground hover:text-foreground hover:bg-muted/30 hover:border-border transition-all cursor-default"
+                        >
+                          <i className={`${item.icon} text-lg`}></i>
+                          <span className="text-sm font-medium tracking-wide">
+                            {item.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </section>
