@@ -21,16 +21,16 @@ export default function AllProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
       {/* Navigation */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 lg:px-16 py-6 bg-[#0a0a0a]/80 backdrop-blur-md transition-all duration-700 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 lg:px-16 py-6 bg-background/80 backdrop-blur-md transition-all duration-700 ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
         }`}
       >
         <Link
           href="/"
-          className="group flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors duration-300"
+          className="group flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
         >
           <svg
             className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300"
@@ -43,7 +43,7 @@ export default function AllProjectsPage() {
           Home
         </Link>
 
-        <div className="text-xs tracking-[0.2em] uppercase text-neutral-500 font-mono">
+        <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-mono">
           {projects.length} Projects
         </div>
       </nav>
@@ -59,16 +59,16 @@ export default function AllProjectsPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
               All Projects
             </h1>
-            <p className="text-neutral-400 text-base sm:text-lg max-w-xl leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
               A curated collection of my work spanning web development, mobile apps, AI systems, and game design.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-neutral-900/50 p-1.5 rounded-full border border-neutral-800/80">
+          <div className="flex items-center gap-2 bg-muted/50 p-1.5 rounded-full border border-border/80">
             <button
               onClick={() => setViewMode("list")}
               className={`p-2 rounded-full transition-all duration-300 ${
-                viewMode === "list" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:text-neutral-300"
+                viewMode === "list" ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
               }`}
               title="List View"
             >
@@ -79,7 +79,7 @@ export default function AllProjectsPage() {
             <button
               onClick={() => setViewMode("grid")}
               className={`p-2 rounded-full transition-all duration-300 ${
-                viewMode === "grid" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:text-neutral-300"
+                viewMode === "grid" ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
               }`}
               title="Grid View"
             >
@@ -105,7 +105,7 @@ export default function AllProjectsPage() {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Image */}
-                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-neutral-900 mb-6">
+                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted mb-6">
                   <Image
                     src={project.image}
                     alt={project.name}
@@ -132,18 +132,18 @@ export default function AllProjectsPage() {
                 {/* Info */}
                 <div className={`flex flex-col ${viewMode === "list" ? "sm:flex-row sm:items-start sm:justify-between" : "items-start"} gap-3`}>
                   <div className="space-y-1.5">
-                    <h2 className={`${viewMode === "list" ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"} font-light group-hover:text-neutral-300 transition-colors duration-300`}>
+                    <h2 className={`${viewMode === "list" ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"} font-light group-hover:text-muted-foreground transition-colors duration-300`}>
                       {project.name}
                     </h2>
-                    <p className={`text-sm text-neutral-500 max-w-md leading-relaxed ${viewMode === "grid" && "line-clamp-2"}`}>
+                    <p className={`text-sm text-muted-foreground max-w-md leading-relaxed ${viewMode === "grid" && "line-clamp-2"}`}>
                       {project.tagline}
                     </p>
                   </div>
 
                   <div className={`flex items-center gap-3 ${viewMode === "list" ? "sm:pt-1" : "pt-1"}`}>
-                    <span className="text-xs tracking-[0.2em] text-neutral-600 font-mono">{project.year}</span>
+                    <span className="text-xs tracking-[0.2em] text-muted-foreground/60 font-mono">{project.year}</span>
                     <svg
-                      className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"
+                      className="w-4 h-4 text-muted-foreground/60 group-hover:text-foreground group-hover:translate-x-1 transition-all duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -158,12 +158,12 @@ export default function AllProjectsPage() {
         </section>
 
         {/* Footer */}
-        <footer className="pb-12 sm:pb-16 border-t border-neutral-800/60 pt-8">
+        <footer className="pb-12 sm:pb-16 border-t border-border/60 pt-8">
           <div className="flex items-center justify-between">
-            <div className="text-xs text-neutral-600">© 2026 Charles Platon</div>
+            <div className="text-xs text-muted-foreground">© 2026 Charles Platon</div>
             <Link
               href="/"
-              className="text-xs tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors duration-300"
+              className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               Back to Home
             </Link>
