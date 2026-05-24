@@ -21,7 +21,7 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            entry.target.classList.add("is-visible")
             setActiveSection(entry.target.id)
           }
         })
@@ -77,7 +77,8 @@ export default function Home() {
         <header
           id="intro"
           ref={(el) => { sectionsRef.current[0] = el }}
-          className="min-h-screen flex items-center opacity-0"
+          data-reveal="intro"
+          className="section-reveal section-reveal--intro min-h-screen flex items-center"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full items-start">
             <Link
@@ -158,7 +159,8 @@ export default function Home() {
         <section
           id="work"
           ref={(el) => { sectionsRef.current[1] = el }}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          data-reveal="work"
+          className="section-reveal section-reveal--work min-h-screen py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -257,7 +259,8 @@ export default function Home() {
         <section
           id="thoughts"
           ref={(el) => { sectionsRef.current[2] = el }}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          data-reveal="thoughts"
+          className="section-reveal section-reveal--thoughts min-h-screen py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
             <h2 className="text-3xl sm:text-4xl font-light">Project & Achievements</h2>
@@ -328,7 +331,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="connect" ref={(el) => { sectionsRef.current[3] = el }} className="py-20 sm:py-32 opacity-0">
+        <section
+          id="connect"
+          ref={(el) => { sectionsRef.current[3] = el }}
+          data-reveal="connect"
+          className="section-reveal section-reveal--connect py-20 sm:py-32"
+        >
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
               <h2 className="text-3xl sm:text-4xl font-light">Let's Connect</h2>

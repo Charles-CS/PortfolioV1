@@ -141,18 +141,74 @@
 }
 
 @layer utilities {
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  .section-reveal {
+    opacity: 0;
+    will-change: opacity, transform;
   }
 
-  @keyframes fade-in-up {
+  .section-reveal.is-visible {
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .section-reveal--intro.is-visible {
+    animation-name: reveal-intro;
+  }
+
+  .section-reveal--work.is-visible {
+    animation-name: reveal-work;
+  }
+
+  .section-reveal--thoughts.is-visible {
+    animation-name: reveal-thoughts;
+  }
+
+  .section-reveal--connect.is-visible {
+    animation-name: reveal-connect;
+  }
+
+  @keyframes reveal-intro {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(36px) scale(0.985);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes reveal-work {
+    from {
+      opacity: 0;
+      transform: translateX(-28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes reveal-thoughts {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes reveal-connect {
+    from {
+      opacity: 0;
+      transform: translateX(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }
