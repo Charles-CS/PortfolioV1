@@ -130,22 +130,29 @@ export default function AboutPage() {
         </div>
 
         <section className="py-16 sm:py-24">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-            <div className="space-y-6 max-w-2xl">
-              <div className="space-y-3">
-                <div className="text-sm text-muted-foreground font-mono tracking-wider">ABOUT ME</div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-                  Charles Platon
-                </h1>
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+            <div className="max-w-2xl space-y-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.35em] text-muted-foreground">
+                  <span className="h-px w-8 bg-border" />
+                  About me
+                </div>
+                <div className="space-y-3">
+                  <h1 className="max-w-xl text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[0.95]">
+                    Charles Platon
+                  </h1>
+                </div>
               </div>
 
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                I&apos;m a passionate developer and creator bridging code and craft. With a Computer Science background, I build digital experiences that are functional and meaningful.
-              </p>
+              <div className="space-y-5 border-l border-border pl-5 sm:pl-6">
+                <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-8">
+                  I am a 21-year-old BS Computer Science student based in Cabuyao, Laguna, Philippines. When I&apos;m not studying, I&apos;m actively developing and diving into hackathons. For me, competitions are a great way to work on solving actual problems and meet interesting people.
+                </p>
 
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                I&apos;m currently exploring full-stack web, game development, and 3D art. When I&apos;m not shipping code, I&apos;m usually modeling in Blender or joining hackathons with my team.
-              </p>
+                <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-8">
+                  I&apos;m a game developer at heart—creator of the first-person horror experience <em>The Lost Hospital</em> built in Unreal Engine—who is also heavily exploring full-stack web development.
+                </p>
+              </div>
 
               {/* Removed hobby/interest tags as requested */}
             </div>
