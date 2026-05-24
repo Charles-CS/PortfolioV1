@@ -15,6 +15,19 @@ export default function ProjectPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [showLoadingSection, setShowLoadingSection] = useState(true)
+  const [isScrollLocked, setIsScrollLocked] = useState(true)
+  const [showScrollbarCover, setShowScrollbarCover] = useState(true)
+  const [isScrollbarCoverFading, setIsScrollbarCoverFading] = useState(false)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("loading-scroll-lock", isScrollLocked)
+    document.body.classList.toggle("loading-scroll-lock", isScrollLocked)
+
+    return () => {
+      document.documentElement.classList.remove("loading-scroll-lock")
+      document.body.classList.remove("loading-scroll-lock")
+    }
+  }, [isScrollLocked])
 
   useEffect(() => {
     // Reveal project data after 2.8s total loading animation
@@ -75,7 +88,12 @@ export default function ProjectPage() {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          setIsScrollLocked(false)
+          setIsScrollbarCoverFading(true)
+        }}
+      >
         {showLoadingSection && (
           <motion.div
             variants={loadingVariants}
@@ -103,6 +121,22 @@ export default function ProjectPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showScrollbarCover ? (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none fixed right-0 top-0 z-[99] h-dvh w-[18px] bg-background"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          onAnimationComplete={() => {
+            if (isScrollbarCoverFading) {
+              setShowScrollbarCover(false)
+              setIsScrollbarCoverFading(false)
+            }
+          }}
+        />
+      ) : null}
 
       <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
         {/* Back Navigation */}
