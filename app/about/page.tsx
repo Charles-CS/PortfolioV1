@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Star, LayoutTemplate, Database, Settings, Gamepad2 } from "lucide-react"
+import { Star, LayoutTemplate, Database, Settings, Gamepad2, ArrowRight } from "lucide-react"
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("Frontend")
@@ -193,12 +193,26 @@ export default function AboutPage() {
         <section className="py-8 border-t border-border">
           <div className="grid gap-6 sm:grid-cols-3 text-sm text-muted-foreground">
             <div>
-              <div className="text-foreground mb-2">Focus</div>
-              Game systems, full‑stack web applications, and polished user experiences.
+              <div className="text-foreground mb-2">A member of</div>
+              <Link
+                href="https://www.facebook.com/ACSS.PNC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group block w-full max-w-xs bg-background border border-border rounded-md p-4 hover:bg-muted/50 transition-colors"
+              >
+                <span className="absolute top-3 right-3 inline-flex items-center justify-center w-7 h-7 rounded-sm border border-border bg-muted/10 text-muted-foreground group-hover:text-foreground">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-foreground">Association of Computer Science Students</span>
+                  <span className="text-xs text-muted-foreground mt-1">(PNC)</span>
+                </div>
+              </Link>
             </div>
             <div>
-              <div className="text-foreground mb-2">Approach</div>
-              Prototype quickly, iterate with feedback, and keep designs minimal and accessible.
+              <div className="text-foreground mb-2">Focus</div>
+              Game systems, full‑stack web applications, and polished user experiences.
             </div>
             <div>
               <div className="text-foreground mb-2">Outside code</div>
