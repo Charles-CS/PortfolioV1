@@ -101,7 +101,8 @@ export default function CertificatesPage() {
         <section className="pb-20 sm:pb-32">
           <div className={`grid ${viewMode === "list" ? "grid-cols-1 gap-16 sm:gap-20" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"} transition-all duration-500`}>
             {certificates.map((cert, index) => (
-              <div
+                <Link
+                href={`/certificates/${cert.slug}`}
                 key={cert.slug}
                 className={`group block transition-all duration-1000 ${
                   isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
@@ -122,12 +123,15 @@ export default function CertificatesPage() {
                     onLoad={() => handleImageLoad(index)}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1152px"
                   />
-                  {/* Hover overlay - removed the "View Project" prompt since it's not a link, but left the effect */}
+                  {/* Hover overlay */}
                   <div
-                    className={`absolute inset-0 bg-black/10 flex items-center justify-center transition-opacity duration-500 ${
+                    className={`absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-500 ${
                       hoveredIndex === index ? "opacity-100" : "opacity-0"
                     }`}
                   >
+                    <div className="px-5 py-2.5 rounded-full border border-white/30 bg-black/40 backdrop-blur-sm text-xs tracking-[0.2em] uppercase text-white">
+                      View Certificate
+                    </div>
                   </div>
                 </div>
 
@@ -154,7 +158,7 @@ export default function CertificatesPage() {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
