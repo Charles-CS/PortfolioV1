@@ -36,7 +36,7 @@ export default function AllProjectsPage() {
         }`}
       >
         <Link
-          href="/"
+          href="/#thoughts"
           className="group flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
         >
           <svg
