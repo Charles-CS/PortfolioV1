@@ -105,7 +105,7 @@ export default function CertificatePage() {
               className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
             >
               <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
-                introducing
+                awarded
               </span>
               <h1 
                 className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground"
