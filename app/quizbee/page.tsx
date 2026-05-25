@@ -48,7 +48,7 @@ export default function QuizBeeChampionPage() {
             <header className="mb-16 md:mb-24 flex flex-col md:flex-row gap-12 md:gap-20">
               <div className="flex-1 space-y-8">
                 <div
-                  className={`transition-all duration-1000 delay-300 ${
+                  className={`transition-all duration-1000 delay-100 ${
                     isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
@@ -63,7 +63,7 @@ export default function QuizBeeChampionPage() {
             </header>
 
             <div
-              className={`relative aspect-video w-full mb-16 md:mb-24 overflow-hidden rounded-sm transition-all duration-1000 delay-500 ${
+              className={`relative aspect-video w-full mb-16 md:mb-24 overflow-hidden rounded-sm transition-all duration-1000 delay-200 ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
             >
@@ -84,7 +84,7 @@ export default function QuizBeeChampionPage() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
               <div className="col-span-1 md:col-span-8 space-y-8">
                 <div
-                  className={`prose prose-lg dark:prose-invert prose-headings:font-light prose-a:text-foreground hover:prose-a:text-muted-foreground transition-all duration-1000 delay-600 ${
+                  className={`prose prose-lg dark:prose-invert prose-headings:font-light prose-a:text-foreground hover:prose-a:text-muted-foreground transition-all duration-1000 delay-300 ${
                     isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
