@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { Star, LayoutTemplate, Database, Settings, Gamepad2, ArrowRight } from "lucide-react"
+import { Star, LayoutTemplate, Database, Settings, Gamepad2, ArrowRight, Github, Instagram, Linkedin } from "lucide-react"
 
 export default function AboutPage() {
   const { resolvedTheme, setTheme } = useTheme()
@@ -226,17 +226,23 @@ export default function AboutPage() {
                 <div className="text-foreground mb-2">Social Links</div>
                 <div className="max-w-xs">
                   <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">in</span>
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">
+                      <Linkedin className="w-4 h-4" aria-hidden="true" />
+                    </span>
                     <span className="text-sm text-foreground">LinkedIn</span>
                   </Link>
 
                   <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">gh</span>
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">
+                      <Github className="w-4 h-4" aria-hidden="true" />
+                    </span>
                     <span className="text-sm text-foreground">GitHub</span>
                   </Link>
 
                   <Link href="#" className="flex items-center gap-3 py-3">
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">ig</span>
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">
+                      <Instagram className="w-4 h-4" aria-hidden="true" />
+                    </span>
                     <span className="text-sm text-foreground">Instagram</span>
                   </Link>
                 </div>
