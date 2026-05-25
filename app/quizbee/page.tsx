@@ -3,93 +3,23 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 
 export default function QuizBeeChampionPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [showLoadingSection, setShowLoadingSection] = useState(true)
-  const [isScrollLocked, setIsScrollLocked] = useState(true)
 
   useEffect(() => {
-    document.documentElement.classList.toggle("loading-scroll-lock", isScrollLocked)
-    document.body.classList.toggle("loading-scroll-lock", isScrollLocked)
-
-    return () => {
-      document.documentElement.classList.remove("loading-scroll-lock")
-      document.body.classList.remove("loading-scroll-lock")
-    }
-  }, [isScrollLocked])
-
-  useEffect(() => {
-    // Reveal project data after total loading animation
-    const timer = setTimeout(() => setIsLoaded(true), 2800)
-    // Hide loading screen element entirely
-    const loadingScreenTimer = setTimeout(() => {
-      setShowLoadingSection(false)
-      setIsScrollLocked(false)
-    }, 2600)
-    return () => {
-      clearTimeout(timer)
-      clearTimeout(loadingScreenTimer)
-    }
+    // Make sure to remove any scroll lock that might have been applied by page transitions
+    document.documentElement.classList.remove("loading-scroll-lock")
+    document.body.classList.remove("loading-scroll-lock")
+    
+    const timer = setTimeout(() => setIsLoaded(true), 50)
+    return () => clearTimeout(timer)
   }, [])
 
-  const loadingVariants = {
-    initial: { y: "0%" },
-    exit: { 
-      y: "-100%", 
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 } 
-    }
-  }
-
-  const textVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.5 } 
-    },
-    exit: { 
-      opacity: 0, 
-      y: -20, 
-      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } 
-    }
-  }
-
   return (
-    <>
-      <AnimatePresence>
-        {showLoadingSection && (
-          <motion.div
-            variants={loadingVariants}
-            initial="initial"
-            exit="exit"
-            className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6 sm:p-10"
-          >
-            <motion.div
-              variants={textVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
-            >
-              <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
-                testing knowledge
-              </span>
-              <h1 
-                className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground text-balance"
-                style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
-              >
-                BSCS QuizBee
-              </h1>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
-        <nav
+    <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
+      <nav
           className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 lg:px-16 py-6 transition-all duration-700 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           }`}
@@ -170,6 +100,5 @@ export default function QuizBeeChampionPage() {
           </article>
         </main>
       </div>
-    </>
   )
 }
