@@ -412,6 +412,8 @@ export default function Home() {
                   excerpt: "A testament to continuous learning and mastery of various technologies, from cloud to specialized development",
                   date: "Jan 2024 - 2026",
                   readTime: "Recognitions",
+                  link: "/certificates",
+                  subtitle: "professional growth",
                 },
               ].map((post, index) => {
                 const isLink = !!post.link;
