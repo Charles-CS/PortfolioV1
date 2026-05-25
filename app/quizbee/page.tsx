@@ -43,7 +43,7 @@ export default function QuizBeeChampionPage() {
           </div>
         </nav>
 
-        <main className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 sm:pb-32">
+        <main className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pt-32">
           <article>
             <header className="mb-16 md:mb-24 flex flex-col md:flex-row gap-12 md:gap-20">
               <div className="flex-1 space-y-8">
@@ -98,6 +98,19 @@ export default function QuizBeeChampionPage() {
               </div>
             </div>
           </article>
+
+          {/* Footer */}
+          <footer className="pb-12 sm:pb-16 border-t border-border/60 pt-8 mt-20">
+            <div className="flex items-center justify-between">
+              <div className="text-xs text-muted-foreground">© 2026 Charles Platon</div>
+              <Link
+                href="/#thoughts"
+                className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+              >
+                Back to Home
+              </Link>
+            </div>
+          </footer>
         </main>
       </div>
   )
