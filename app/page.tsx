@@ -40,6 +40,7 @@ export default function Home() {
       preloadRoute("/work/lunas")
       preloadRoute("/work/toka")
       preloadRoute("/hackathons")
+      preloadRoute("/quizbee")
 
       router.prefetch("/about")
       router.prefetch("/work")
@@ -48,6 +49,7 @@ export default function Home() {
       router.prefetch("/work/lunas")
       router.prefetch("/work/toka")
       router.prefetch("/hackathons")
+      router.prefetch("/quizbee")
 
       import("framer-motion").catch(() => {})
     }, 100)
@@ -402,6 +404,8 @@ export default function Home() {
                   excerpt: "Consistently recognized for technical knowledge and problem-solving speed in regional computer science competitions.",
                   date: "Feb 2026",
                   readTime: "Awards",
+                  link: "/quizbee",
+                  subtitle: "testing knowledge",
                 },
                 {
                   title: "Certificates",
