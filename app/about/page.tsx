@@ -225,7 +225,7 @@ export default function AboutPage() {
               <div>
                 <div className="text-foreground mb-2">Social Links</div>
                 <div className="max-w-xs">
-                  <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
+                  <Link href="https://www.linkedin.com/in/charles-platon" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-b border-border py-3">
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">
                       <Linkedin className="w-4 h-4" aria-hidden="true" />
                     </span>
