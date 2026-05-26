@@ -232,7 +232,7 @@ export default function AboutPage() {
                     <span className="text-sm text-foreground">LinkedIn</span>
                   </Link>
 
-                  <Link href="#" className="flex items-center gap-3 border-b border-border py-3">
+                  <Link href="https://github.com/Charles-CS" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-b border-border py-3">
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-muted/10 border border-border text-muted-foreground">
                       <Github className="w-4 h-4" aria-hidden="true" />
                     </span>
