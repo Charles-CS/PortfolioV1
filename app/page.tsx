@@ -375,8 +375,7 @@ export default function Home() {
         <section
           id="thoughts"
           ref={(el) => { sectionsRef.current[2] = el }}
-          data-reveal="thoughts"
-          className="section-reveal section-reveal--thoughts min-h-screen py-20 sm:py-32"
+          className="min-h-screen py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
             <h2 className="text-3xl sm:text-4xl font-light">Project & Achievements</h2>
@@ -423,7 +422,7 @@ export default function Home() {
                   onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
                     if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
                     e.preventDefault();
-                    navigateWithTransition(post.link!, post.title, post.subtitle || "glad you're here");
+                    router.push(post.link!);
                   }
                 } : {};
 
