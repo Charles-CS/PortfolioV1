@@ -89,10 +89,22 @@ export default function QuizBeeChampionPage() {
                   }`}
                 >
                   <p className="text-muted-foreground leading-relaxed">
-                    Competing in regional computer science events has been a thrilling chapter of my academic journey. The BSCS QuizBee challenged participants across a spectrum of topics including algorithms, data structures, software engineering principles, and emerging technologies. Our team consistently delivered rapid, accurate solutions under intense time pressure.
+                    Competing in regional computer science events has been a thrilling chapter of my academic journey. The BSCS QuizBee pushed participants across a wide spectrum of topics — from algorithms and data structures to software engineering principles and emerging technologies — and required both quick recall and applied problem solving under intense time pressure.
                   </p>
+
                   <p className="text-muted-foreground leading-relaxed">
-                    This achievement is more than just an award—it represents countless hours of preparation, an insatiable curiosity for how systems work beneath the surface, and the ability to think critically when it matters most. It refined my approach to complex problem-solving, a skill that translates directly to building scalable software in the real world.
+                    As part of the QuizBee team I took part in buzzer-style rapid rounds, collaborative team rounds, and timed written problems. Preparation involved regular practice sessions, mock buzzer drills, and focused review of core concepts such as complexity analysis, graph and dynamic programming patterns, system design basics, networking fundamentals, and practical debugging strategies.
+                  </p>
+
+                  <ul className="text-muted-foreground leading-relaxed list-disc list-inside space-y-2">
+                    <li><strong>Topics:</strong> Algorithmic problem solving, complexity analysis, data structures, software design, databases, and current CS trends.</li>
+                    <li><strong>Formats:</strong> Buzzer rounds for rapid recall, coding/whiteboard problems for applied thinking, and case-style questions testing trade-offs.</li>
+                    <li><strong>My role:</strong> Quick problem decomposition under time pressure, strategic buzzer positioning, and coordinating with teammates so we covered complementary strengths.</li>
+                    <li><strong>Skills gained:</strong> Faster analytical reasoning, concise technical communication, calmness under pressure, and improved pattern recognition for common algorithmic motifs.</li>
+                  </ul>
+
+                  <p className="text-muted-foreground leading-relaxed">
+                    Beyond the trophy, the QuizBee experience sharpened my ability to reason clearly in high-pressure situations and improved the way I approach design trade-offs and debugging in real projects. Those habits — deliberate practice, concise explanation, and quick validation — inform how I build reliable, maintainable systems today.
                   </p>
                 </div>
               </div>
