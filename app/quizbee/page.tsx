@@ -53,10 +53,10 @@ export default function QuizBeeChampionPage() {
                   }`}
                 >
                   <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light tracking-tight mb-6">
-                    BSCS QuizBee Champion
+                    ACSS QuizBee Champion
                   </h1>
                   <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl">
-                    Consistently recognized for technical knowledge and problem-solving speed in regional computer science competitions.
+                    Champion recognition from the Association of Computer Science Students for strong problem-solving speed and technical knowledge.
                   </p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function QuizBeeChampionPage() {
               <div className={`absolute inset-0 bg-muted transition-opacity duration-700 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`} />
               <Image
                 src="/school-competition-image/competition-1.png"
-                alt="BSCS QuizBee Champion"
+                alt="ACSS QuizBee Champion"
                 fill
                 priority
                 className={`object-cover transition-all duration-1000 ${
@@ -89,17 +89,17 @@ export default function QuizBeeChampionPage() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 text-center">
                 <div className="space-y-3">
                   <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Event</div>
-                  <div className="text-sm text-foreground/80 leading-relaxed">National CS & IT Competition</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">ACSS QuizBee Competition</div>
                 </div>
 
                 <div className="space-y-3">
                   <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Achievement</div>
-                  <div className="text-sm text-foreground/80 leading-relaxed">Top 8 Finalist (Out of 70+ Teams)</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">QuizBee Champion</div>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Project</div>
-                  <div className="text-sm text-foreground/80 leading-relaxed">Lunas</div>
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Organization</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">Association of Computer Science Students</div>
                 </div>
               </div>
             </div>
