@@ -106,7 +106,10 @@ export default function QuizBeeChampionPage() {
             
             <div className={`max-w-3xl mx-auto text-center mt-8 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Participating in the ACSS QuizBee strengthened my ability to solve algorithmic problems quickly under pressure, improved my critical thinking, and helped me communicate technical ideas clearly — skills I apply to my projects.
+                At the ACSS QuizBee I experienced the pressure and excitement of solving tough problems with limited time. The event sharpened my problem‑solving speed, strengthened my analytical thinking, and taught me how to communicate technical ideas more clearly — lessons I carry into every project I work on.
+              </p>
+              <p className="mt-4 text-sm text-muted-foreground/80">
+                Huge thanks to my teammates — Joshua Lopez, Sheena Manalo, and Kirt Mag-usara — for their support, teamwork, and great collaboration.
               </p>
             </div>
           </article>
