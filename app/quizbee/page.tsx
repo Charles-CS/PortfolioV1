@@ -63,25 +63,6 @@ export default function QuizBeeChampionPage() {
             </header>
 
             <div
-              className={`relative aspect-video w-full mb-16 md:mb-24 overflow-hidden rounded-sm transition-all duration-1000 delay-200 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
-            >
-              <div className={`absolute inset-0 bg-muted transition-opacity duration-700 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`} />
-              <Image
-                src="/school-competition-image/competition-1.png"
-                alt="ACSS QuizBee Champion"
-                fill
-                priority
-                className={`object-cover transition-all duration-1000 ${
-                  imageLoaded ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-[1.02] blur-sm"
-                }`}
-                onLoad={() => setImageLoaded(true)}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-              />
-            </div>
-
-            <div
               className={`py-10 sm:py-14 border-t border-border/60 transition-all duration-1000 delay-300 ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
@@ -102,6 +83,25 @@ export default function QuizBeeChampionPage() {
                   <div className="text-sm text-foreground/80 leading-relaxed">Association of Computer Science Students</div>
                 </div>
               </div>
+            </div>
+
+            <div
+              className={`relative aspect-video w-full mb-16 md:mb-24 overflow-hidden rounded-sm transition-all duration-1000 delay-200 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
+            >
+              <div className={`absolute inset-0 bg-muted transition-opacity duration-700 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`} />
+              <Image
+                src="/school-competition-image/competition-1.png"
+                alt="ACSS QuizBee Champion"
+                fill
+                priority
+                className={`object-cover transition-all duration-1000 ${
+                  imageLoaded ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-[1.02] blur-sm"
+                }`}
+                onLoad={() => setImageLoaded(true)}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+              />
             </div>
           </article>
 
