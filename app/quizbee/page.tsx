@@ -81,31 +81,25 @@ export default function QuizBeeChampionPage() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-              <div className="col-span-1 md:col-span-8 space-y-8">
-                <div
-                  className={`prose prose-lg dark:prose-invert prose-headings:font-light prose-a:text-foreground hover:prose-a:text-muted-foreground transition-all duration-1000 delay-300 ${
-                    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
-                >
-                  <p className="text-muted-foreground leading-relaxed">
-                    Competing in regional computer science events has been a thrilling chapter of my academic journey. The BSCS QuizBee pushed participants across a wide spectrum of topics — from algorithms and data structures to software engineering principles and emerging technologies — and required both quick recall and applied problem solving under intense time pressure.
-                  </p>
+            <div
+              className={`py-10 sm:py-14 border-t border-border/60 transition-all duration-1000 delay-300 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 text-center">
+                <div className="space-y-3">
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Event</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">National CS & IT Competition</div>
+                </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
-                    As part of the QuizBee team I took part in buzzer-style rapid rounds, collaborative team rounds, and timed written problems. Preparation involved regular practice sessions, mock buzzer drills, and focused review of core concepts such as complexity analysis, graph and dynamic programming patterns, system design basics, networking fundamentals, and practical debugging strategies.
-                  </p>
+                <div className="space-y-3">
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Achievement</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">Top 8 Finalist (Out of 70+ Teams)</div>
+                </div>
 
-                  <ul className="text-muted-foreground leading-relaxed list-disc list-inside space-y-2">
-                    <li><strong>Topics:</strong> Algorithmic problem solving, complexity analysis, data structures, software design, databases, and current CS trends.</li>
-                    <li><strong>Formats:</strong> Buzzer rounds for rapid recall, coding/whiteboard problems for applied thinking, and case-style questions testing trade-offs.</li>
-                    <li><strong>My role:</strong> Quick problem decomposition under time pressure, strategic buzzer positioning, and coordinating with teammates so we covered complementary strengths.</li>
-                    <li><strong>Skills gained:</strong> Faster analytical reasoning, concise technical communication, calmness under pressure, and improved pattern recognition for common algorithmic motifs.</li>
-                  </ul>
-
-                  <p className="text-muted-foreground leading-relaxed">
-                    Beyond the trophy, the QuizBee experience sharpened my ability to reason clearly in high-pressure situations and improved the way I approach design trade-offs and debugging in real projects. Those habits — deliberate practice, concise explanation, and quick validation — inform how I build reliable, maintainable systems today.
-                  </p>
+                <div className="space-y-3">
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">Project</div>
+                  <div className="text-sm text-foreground/80 leading-relaxed">Lunas</div>
                 </div>
               </div>
             </div>
