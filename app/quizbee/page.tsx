@@ -103,6 +103,12 @@ export default function QuizBeeChampionPage() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
               />
             </div>
+            
+            <div className={`max-w-3xl mx-auto text-center mt-8 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Participating in the ACSS QuizBee strengthened my ability to solve algorithmic problems quickly under pressure, improved my critical thinking, and helped me communicate technical ideas clearly — skills I apply to my projects.
+              </p>
+            </div>
           </article>
 
           {/* Footer */}
