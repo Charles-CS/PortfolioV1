@@ -332,15 +332,13 @@ export default function AboutPage() {
                         <div className="sr-only">Tech stack</div>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-start">
                           {activeStacks.map((item) => (
-                            <Link
+                            <div
                               key={item.name}
-                              href={`/about/stack/${createTechStackSlug(item.name)}`}
-                              aria-label={`Open details for ${item.name}`}
-                              className="group flex flex-col items-center justify-center gap-2 rounded-xl p-2 sm:p-3 transition-all duration-300 hover:bg-muted/40 focus:outline-none focus:ring-2 focus:ring-foreground/20"
+                              className="group flex flex-col items-center justify-center gap-2 rounded-xl p-2 sm:p-3 transition-all duration-300 hover:bg-muted/40"
                             >
                               <i aria-hidden="true" className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-110`} />
                               <span className="sr-only">{item.name}</span>
-                            </Link>
+                            </div>
                           ))}
                         </div>
                       </div>
