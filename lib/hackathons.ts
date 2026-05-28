@@ -1,4 +1,18 @@
-export const hackathons = [
+export interface Hackathon {
+  slug: string
+  name: string
+  year: string
+  description: string
+  tagline: string
+  event?: string
+  achievement?: string
+  project?: string
+  theme?: string
+  focus?: string
+  image: string
+}
+
+export const hackathons: Hackathon[] = [
   {
     slug: "sikaptala",
     name: "SIKAPTala 2026",

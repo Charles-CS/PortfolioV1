@@ -1,7 +1,8 @@
 import { getTechStackBySlug } from "@/lib/tech-stacks"
 
-export default function TechStackPage({ params }: { params: { slug: string } }) {
-  const stack = getTechStackBySlug(params.slug)
+export default async function TechStackPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const stack = getTechStackBySlug(slug)
 
   const label = stack?.name ?? "Stack"
   const iconClass = stack?.icon ?? ""
