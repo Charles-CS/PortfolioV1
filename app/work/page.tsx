@@ -58,7 +58,7 @@ export default function AllProjectsPage() {
       {/* Header */}
       <main className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         <section
-          className={`pt-28 sm:pt-36 pb-12 sm:pb-16 transition-all duration-1000 delay-100 ${
+          className={`py-0 transition-all duration-1000 delay-100 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           } flex flex-col md:flex-row md:items-end justify-between gap-6`}
         >
