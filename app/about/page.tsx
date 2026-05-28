@@ -330,12 +330,12 @@ export default function AboutPage() {
                     >
                       <div className="w-full">
                         <div className="sr-only">Tech stack</div>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-start">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-6 gap-y-3 items-start">
                           {activeStacks.map((item) => (
                             <div
                               key={item.name}
                               title={item.name}
-                              className="group flex flex-col items-center justify-center gap-2 rounded-xl p-2 sm:p-3 transition-all duration-300 hover:bg-muted/40"
+                              className="group flex flex-col items-center justify-center gap-1 rounded-xl p-1 sm:p-2 transition-all duration-300 hover:bg-muted/40"
                             >
                               <i aria-hidden="true" className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-110`} />
                               <span className="sr-only">{item.name}</span>
