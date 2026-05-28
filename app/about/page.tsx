@@ -263,7 +263,7 @@ export default function AboutPage() {
                 <div className="text-foreground mb-2">Open for opportunities</div>
                 <div className="border border-border rounded-md p-4 bg-background max-w-xs flex-1 flex flex-col justify-between">
                   <p className="text-sm text-muted-foreground">Open to work and collaboration — available for full-time roles and freelance projects.</p>
-                  <Link href="#" className="mt-4 inline-flex items-center text-sm font-medium text-foreground">
+                  <Link href="mailto:charlesplaton263@gmail.com" className="mt-4 inline-flex items-center text-sm font-medium text-foreground">
                     Contact me
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
