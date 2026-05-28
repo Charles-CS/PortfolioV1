@@ -334,10 +334,14 @@ export default function AboutPage() {
                           {activeStacks.map((item) => (
                             <div
                               key={item.name}
+                              title={item.name}
                               className="group flex flex-col items-center justify-center gap-2 rounded-xl p-2 sm:p-3 transition-all duration-300 hover:bg-muted/40"
                             >
                               <i aria-hidden="true" className={`${item.icon} text-2xl sm:text-3xl md:text-4xl text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-110`} />
                               <span className="sr-only">{item.name}</span>
+                              <span aria-hidden="true" className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-muted-foreground mt-1">
+                                {item.name}
+                              </span>
                             </div>
                           ))}
                         </div>
