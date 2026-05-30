@@ -64,7 +64,7 @@ export const projects: Project[] = [
     role: "Mobile Developer",
     responsibilities:
       "React Native app development, Firebase real-time database, reward system design, parent/child role management, and gamification mechanics.",
-    url: "https://toka.app/",
+    url: "https://toka-platform.vercel.app/",
     tech: ["React Native", "TypeScript", "Firebase"],
     year: "2026",
   },
