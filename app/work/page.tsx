@@ -12,6 +12,8 @@ export default function AllProjectsPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid">("list")
   const [page, setPage] = useState<number>(1)
   const ITEMS_PER_PAGE = 9
+  const [animPrev, setAnimPrev] = useState(false)
+  const [animNext, setAnimNext] = useState(false)
 
   const totalPages = Math.max(1, Math.ceil(projects.length / ITEMS_PER_PAGE))
   const visibleProjects = projects.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
@@ -177,12 +179,17 @@ export default function AllProjectsPage() {
         <section className="py-6 flex items-center justify-center">
           <div className="flex items-center gap-4">
             <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              onClick={() => {
+                if (page === 1) return
+                setAnimPrev(true)
+                setPage((p) => Math.max(1, p - 1))
+                setTimeout(() => setAnimPrev(false), 220)
+              }}
               disabled={page === 1}
               aria-label="Previous page"
               className={`p-2 rounded-full transition-colors duration-200 ${page === 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-foreground/10"}`}
             >
-              <span className="text-sm">‹</span>
+              <span className={`text-sm inline-block transition-transform duration-200 ${animPrev ? "-translate-x-1 scale-95" : "translate-x-0"}`}>‹</span>
             </button>
 
             <div className="flex items-center gap-2">
@@ -197,12 +204,17 @@ export default function AllProjectsPage() {
             </div>
 
             <button
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              onClick={() => {
+                if (page === totalPages) return
+                setAnimNext(true)
+                setPage((p) => Math.min(totalPages, p + 1))
+                setTimeout(() => setAnimNext(false), 220)
+              }}
               disabled={page === totalPages}
               aria-label="Next page"
               className={`p-2 rounded-full transition-colors duration-200 ${page === totalPages ? "opacity-30 cursor-not-allowed" : "hover:bg-foreground/10"}`}
             >
-              <span className="text-sm">›</span>
+              <span className={`text-sm inline-block transition-transform duration-200 ${animNext ? "translate-x-1 scale-95" : "translate-x-0"}`}>›</span>
             </button>
           </div>
         </section>
