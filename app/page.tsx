@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState, useCallback } from "react"
 import { useTheme } from "next-themes"
+import { motion, AnimatePresence } from "framer-motion"
 
 // Aggressively preload a route by fetching its HTML — this forces Next.js
 // dev server to compile the route in the background so it's instant on click
@@ -77,6 +78,8 @@ export default function Home() {
 
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState("")
+  const [showInitial, setShowInitial] = useState(true)
+  const [isScrollLocked, setIsScrollLocked] = useState(true)
   const [showHoverLabel, setShowHoverLabel] = useState(false)
   const [hoverLabelPosition, setHoverLabelPosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectIndex, setHoveredProjectIndex] = useState<number | null>(null)
@@ -88,12 +91,21 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    document.documentElement.classList.remove("loading-scroll-lock")
-    document.body.classList.remove("loading-scroll-lock")
+    document.documentElement.classList.toggle("loading-scroll-lock", isScrollLocked)
+    document.body.classList.toggle("loading-scroll-lock", isScrollLocked)
 
     return () => {
       document.documentElement.classList.remove("loading-scroll-lock")
       document.body.classList.remove("loading-scroll-lock")
+    }
+  }, [isScrollLocked])
+
+  useEffect(() => {
+    // Hide loading screen element entirely
+    const loadingScreenTimer = setTimeout(() => setShowInitial(false), 2600)
+
+    return () => {
+      clearTimeout(loadingScreenTimer)
     }
   }, [])
 
@@ -140,8 +152,64 @@ export default function Home() {
     setProjectHoverLabelPosition(nextPosition)
   }
 
+  const loadingVariants = {
+    initial: { y: "0%" },
+    exit: {
+      y: "-100%",
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2 }
+    }
+  }
+
+  const textVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.5 }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
+      {/* ===== INITIAL PAGE LOAD OVERLAY ===== */}
+      <AnimatePresence
+        onExitComplete={() => {
+          setIsScrollLocked(false)
+        }}
+      >
+        {showInitial && (
+          <motion.div
+            variants={loadingVariants}
+            initial="initial"
+            exit="exit"
+            className="fixed inset-0 z-[200] bg-background flex flex-col items-center justify-center p-6 sm:p-10"
+          >
+            <motion.div
+              variants={textVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="text-center space-y-4 sm:space-y-6 flex flex-col items-center"
+            >
+              <span className="text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-muted-foreground font-mono mb-2">
+                hello there, meet
+              </span>
+              <h1
+                className="text-5xl sm:text-7xl md:text-8xl font-light text-foreground"
+                style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+              >
+                Charles Platon
+              </h1>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ===== INSTANT TRANSITION OVERLAY ===== */}
       {/* This is part of the home page's own DOM, so it renders with ZERO delay */}
       {transition.active && (
