@@ -127,7 +127,7 @@ export default function ProjectPage() {
         } bg-background/80 backdrop-blur-md`}
       >
         <Link
-          href="/"
+          href="/#work"
           className="group flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
         >
           <svg
