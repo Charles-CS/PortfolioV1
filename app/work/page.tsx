@@ -173,15 +173,16 @@ export default function AllProjectsPage() {
           </div>
         </section>
 
-        {/* Pagination */}
+        {/* Minimalist Pagination */}
         <section className="py-6 flex items-center justify-center">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
-              className={`px-3 py-2 rounded border border-border/60 transition-colors duration-200 ${page === 1 ? "opacity-40 cursor-not-allowed" : "hover:border-foreground/50"}`}
+              aria-label="Previous page"
+              className={`p-2 rounded-full transition-colors duration-200 ${page === 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-foreground/10"}`}
             >
-              Prev
+              <span className="text-sm">‹</span>
             </button>
 
             <div className="flex items-center gap-2">
@@ -189,19 +190,19 @@ export default function AllProjectsPage() {
                 <button
                   key={idx}
                   onClick={() => setPage(idx + 1)}
-                  className={`w-9 h-9 flex items-center justify-center rounded ${page === idx + 1 ? "bg-foreground text-background" : "border border-border/60 text-muted-foreground hover:text-foreground"}`}
-                >
-                  {idx + 1}
-                </button>
+                  aria-label={`Go to page ${idx + 1}`}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${page === idx + 1 ? "bg-foreground" : "bg-muted/30 hover:bg-foreground/60"}`}
+                />
               ))}
             </div>
 
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
-              className={`px-3 py-2 rounded border border-border/60 transition-colors duration-200 ${page === totalPages ? "opacity-40 cursor-not-allowed" : "hover:border-foreground/50"}`}
+              aria-label="Next page"
+              className={`p-2 rounded-full transition-colors duration-200 ${page === totalPages ? "opacity-30 cursor-not-allowed" : "hover:bg-foreground/10"}`}
             >
-              Next
+              <span className="text-sm">›</span>
             </button>
           </div>
         </section>
