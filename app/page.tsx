@@ -20,6 +20,9 @@ const PROJECT_NAMES: Record<string, string> = {
   toka: "Toka",
 }
 
+// Track if the initial loading screen has been shown during this session
+let hasSeenInitialLoad = false;
+
 export default function Home() {
   const router = useRouter()
   const { resolvedTheme, setTheme } = useTheme()
@@ -78,8 +81,8 @@ export default function Home() {
 
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState("")
-  const [showInitial, setShowInitial] = useState(true)
-  const [isScrollLocked, setIsScrollLocked] = useState(true)
+  const [showInitial, setShowInitial] = useState(!hasSeenInitialLoad)
+  const [isScrollLocked, setIsScrollLocked] = useState(!hasSeenInitialLoad)
   const [showHoverLabel, setShowHoverLabel] = useState(false)
   const [hoverLabelPosition, setHoverLabelPosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectIndex, setHoveredProjectIndex] = useState<number | null>(null)
@@ -101,11 +104,16 @@ export default function Home() {
   }, [isScrollLocked])
 
   useEffect(() => {
-    // Hide loading screen element entirely
-    const loadingScreenTimer = setTimeout(() => setShowInitial(false), 2600)
+    if (!hasSeenInitialLoad) {
+      hasSeenInitialLoad = true;
+      // Hide loading screen element entirely
+      const loadingScreenTimer = setTimeout(() => {
+        setShowInitial(false)
+      }, 2600)
 
-    return () => {
-      clearTimeout(loadingScreenTimer)
+      return () => {
+        clearTimeout(loadingScreenTimer)
+      }
     }
   }, [])
 
