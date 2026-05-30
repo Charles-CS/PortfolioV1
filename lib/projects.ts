@@ -78,7 +78,7 @@ export const projects: Project[] = [
     role: "Full-Stack Developer",
     responsibilities:
       "AI integration, topic synthesis engine, dynamic roadmap generation, team collaboration features, and responsive UI development.",
-    url: "https://brainstormai.vercel.app/",
+    url: "https://brainstorm-ai-title-generator.vercel.app/",
     tech: ["Next.js", "TypeScript", "Python", "TensorFlow", "FastAPI", "React", "PostgreSQL"],
     year: "2025",
   },
