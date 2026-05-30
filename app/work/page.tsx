@@ -10,6 +10,11 @@ export default function AllProjectsPage() {
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set())
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [viewMode, setViewMode] = useState<"list" | "grid">("list")
+  const [page, setPage] = useState<number>(1)
+  const ITEMS_PER_PAGE = 9
+
+  const totalPages = Math.max(1, Math.ceil(projects.length / ITEMS_PER_PAGE))
+  const visibleProjects = projects.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
 
   useEffect(() => {
     document.documentElement.classList.remove("loading-scroll-lock")
@@ -100,7 +105,10 @@ export default function AllProjectsPage() {
         {/* Projects Grid */}
         <section className="pb-20 sm:pb-32">
           <div className={`grid ${viewMode === "list" ? "grid-cols-1 gap-16 sm:gap-20" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"} transition-all duration-500`}>
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, i) => {
+              const index = (page - 1) * ITEMS_PER_PAGE + i
+
+              return (
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
@@ -160,7 +168,41 @@ export default function AllProjectsPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Pagination */}
+        <section className="py-6 flex items-center justify-center">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page === 1}
+              className={`px-3 py-2 rounded border border-border/60 transition-colors duration-200 ${page === 1 ? "opacity-40 cursor-not-allowed" : "hover:border-foreground/50"}`}
+            >
+              Prev
+            </button>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: totalPages }, (_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setPage(idx + 1)}
+                  className={`w-9 h-9 flex items-center justify-center rounded ${page === idx + 1 ? "bg-foreground text-background" : "border border-border/60 text-muted-foreground hover:text-foreground"}`}
+                >
+                  {idx + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+              className={`px-3 py-2 rounded border border-border/60 transition-colors duration-200 ${page === totalPages ? "opacity-40 cursor-not-allowed" : "hover:border-foreground/50"}`}
+            >
+              Next
+            </button>
           </div>
         </section>
 
