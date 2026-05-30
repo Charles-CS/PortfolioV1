@@ -147,7 +147,7 @@ export const projects: Project[] = [
     image: "/selected-projects-image/project-10.png",
     role: "Frontend Developer",
     responsibilities: "Frontend development and UI implementation",
-    url: "#",
+    url: "https://ghostnet-ai.vercel.app/",
     tech: [
       "Web Unlocker",
       "Scraping Browser",
