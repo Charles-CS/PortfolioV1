@@ -120,7 +120,7 @@ export const projects: Project[] = [
     role: "Game Developer",
     responsibilities:
       "Game mechanics design, Unity development, reading comprehension integration, UI/UX design, and educational content curation.",
-    url: "#",
+    url: "https://sonic-path.vercel.app/",
     tech: ["Unity", "C#", "Game Design"],
     year: "2024",
   },
