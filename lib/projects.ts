@@ -106,7 +106,7 @@ export const projects: Project[] = [
     role: "Game Developer",
     responsibilities:
       "Level design, Unreal Engine 5 development, environmental storytelling, lighting and atmosphere design, and gameplay scripting.",
-    url: "https://sonic-path.vercel.app/",
+    url: "https://charles-cs.github.io/Portfolio/The%20Lost%20Hospital.html",
     tech: ["Unreal Engine 5", "Blueprints", "C++"],
     year: "2025",
   },
