@@ -138,6 +138,29 @@ export const projects: Project[] = [
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2024",
   },
+  {
+    slug: "ghostnet-ai",
+    name: "Ghostnet.ai",
+    tagline: "AI-assisted brand-impersonation monitoring",
+    description:
+      "AI-assisted brand‑impersonation monitoring. GhostNet AI scans the live web for phishing sites, typosquats and cloned profiles, captures verifiable screenshots and HTML snapshots, and produces a machine‑readable draft takedown report",
+    image: "/selected-projects-image/project-10.png",
+    role: "Frontend Developer",
+    responsibilities: "Frontend development and UI implementation",
+    url: "#",
+    tech: [
+      "Web Unlocker",
+      "Scraping Browser",
+      "Gemini-2.5-Flash",
+      "PostgreSQL",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Bright Data SERP API",
+    ],
+    year: "2026",
+  },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {
