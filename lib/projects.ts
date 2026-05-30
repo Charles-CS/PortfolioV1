@@ -50,7 +50,7 @@ export const projects: Project[] = [
     role: "Full-Stack Developer",
     responsibilities:
       "End-to-end PWA architecture, Supabase database integration, QR-based access system, RBAC implementation, UI/UX design, and full-stack deployment.",
-    url: "https://lunas.vercel.app/",
+    url: "https://lunas.software/",
     tech: ["Next.js", "React", "PostgreSQL", "Password Hashing", "RBAC", "TailwindCSS"],
     year: "2026",
   },
