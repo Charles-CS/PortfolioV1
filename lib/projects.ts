@@ -134,7 +134,7 @@ export const projects: Project[] = [
     role: "Frontend Developer",
     responsibilities:
       "E-commerce UI development, product catalog system, responsive design, and shopping cart functionality.",
-    url: "#",
+    url: "https://charles-cs.github.io/Portfolio/TechTressure.html",
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2024",
   },
