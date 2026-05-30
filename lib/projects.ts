@@ -92,7 +92,7 @@ export const projects: Project[] = [
     role: "Frontend Developer",
     responsibilities:
       "Component library development, drag-and-drop interface, real-time preview engine, dark theme system, and template management.",
-    url: "#",
+    url: "https://lumina-website-builder.vercel.app/",
     tech: ["React", "TypeScript", "TailwindCSS", "Node.js"],
     year: "2025",
   },
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     role: "Game Developer",
     responsibilities:
       "Level design, Unreal Engine 5 development, environmental storytelling, lighting and atmosphere design, and gameplay scripting.",
-    url: "#",
+    url: "https://sonic-path.vercel.app/",
     tech: ["Unreal Engine 5", "Blueprints", "C++"],
     year: "2025",
   },
